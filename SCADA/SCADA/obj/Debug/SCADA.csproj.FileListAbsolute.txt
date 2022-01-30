@@ -1,0 +1,12 @@
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\SCADA.dll.config
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\SCADA.dll
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\SCADA.pdb
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\EntityFramework.dll
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\EntityFramework.SqlServer.dll
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\EntityFramework.xml
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\EntityFramework.SqlServer.xml
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.csproj.AssemblyReference.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.csproj.CoreCompileInputs.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.csproj.CopyComplete
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.dll
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.pdb

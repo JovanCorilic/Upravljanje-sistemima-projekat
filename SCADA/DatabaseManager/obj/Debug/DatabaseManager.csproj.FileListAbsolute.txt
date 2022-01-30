@@ -1,0 +1,7 @@
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\DatabaseManager\bin\Debug\DatabaseManager.exe.config
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\DatabaseManager\bin\Debug\DatabaseManager.exe
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\DatabaseManager\bin\Debug\DatabaseManager.pdb
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\DatabaseManager\obj\Debug\DatabaseManager.csproj.AssemblyReference.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\DatabaseManager\obj\Debug\DatabaseManager.csproj.CoreCompileInputs.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\DatabaseManager\obj\Debug\DatabaseManager.exe
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\DatabaseManager\obj\Debug\DatabaseManager.pdb

@@ -8,7 +8,6 @@ namespace SCADA
 {
     public class AI
     {
-        [Key]
         public string tag_name { get; set; }
         public string description { get; set; }
         public string driver { get; set; }

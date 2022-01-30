@@ -8,7 +8,6 @@ namespace SCADA
 {
     public class AO
     {
-        [Key]
         public string tag_name { get; set; }
         public string description { get; set; }
         public string IO_address { get; set; }
