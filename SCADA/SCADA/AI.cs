@@ -14,7 +14,7 @@ namespace SCADA
         public string IO_address { get; set; }
         public string scan_time { get; set; }
         public string alarms { get; set; }
-        public string onoff_scan { get; set; }
+        public bool onoff_scan { get; set; }
         public string low_limit { get; set; }
         public string high_limit { get; set; }
         public string units { get; set; }

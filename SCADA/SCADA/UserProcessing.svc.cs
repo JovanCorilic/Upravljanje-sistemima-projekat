@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
+using System.Xml.Linq;
 using Simulation_Driver;
 
 namespace SCADA
@@ -14,11 +16,121 @@ namespace SCADA
     public class UserProcessing : IUserProcessing,IAuthentication
     {
         private static Dictionary<string, User> authenticatedUsers = new Dictionary<string, User>();
+        private static Dictionary<string, AI> aIs = new Dictionary<string, AI>();
+        private static Dictionary<string, AO> aOs = new Dictionary<string, AO>();
+        private static Dictionary<string, DI> dIs = new Dictionary<string, DI>();
+        private static Dictionary<string, DO> dOs = new Dictionary<string, DO>();
 
         public void DoWork()
         {
             
             
+        }
+
+        private void ispisXML()
+        {
+            XElement xElement = new XElement("");
+            xElement.Add(new XElement("",new XAttribute("","dwdw"),new XAttribute("","")));
+        }
+
+        private void ucitavanjeXML()
+        {
+            if (File.Exists("scadaConfig.xml"))
+            {
+                XElement xmlData = XElement.Load("scadaConfig.xml");
+                XElement lista = (XElement)xmlData.FirstNode;
+                XElement listaAI = (XElement)lista.FirstNode;
+                do
+                {
+                    AI aI = new AI();
+                    var attribute = listaAI.FirstAttribute;
+                    aI.description = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.driver = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.IO_address = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.scan_time = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.alarms = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.onoff_scan = bool.Parse(attribute.Value);
+                    attribute = attribute.NextAttribute;
+                    aI.low_limit = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.high_limit = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.units = attribute.Value;
+                    aI.tag_name = listaAI.FirstNode.ToString();
+                    aIs.Add(aI.tag_name, aI);
+                    listaAI = (XElement)listaAI.NextNode;
+                } while (listaAI!=null);
+
+                lista = (XElement)lista.NextNode;
+                XElement listaAO = (XElement)lista.FirstNode;
+                do
+                {
+                    AO ao = new AO();
+                    var attribute = listaAO.FirstAttribute;
+                    ao.description = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    
+                    
+                    ao.IO_address = attribute.Value;
+                    
+                    
+                    attribute = attribute.NextAttribute;
+                    ao.inital_value = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    
+                    
+                    ao.low_limit = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    ao.high_limit = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    ao.units = attribute.Value;
+                    ao.tag_name = listaAO.FirstNode.ToString();
+                    aOs.Add(ao.tag_name, ao);
+                    listaAO = (XElement)listaAO.NextNode;
+                } while (listaAO!=null);
+                lista = (XElement)lista.NextNode;
+                XElement listaDI = (XElement)lista.FirstNode;
+                do
+                {
+                    DI di = new DI();
+                    var attribute = listaDI.FirstAttribute;
+                    di.description = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    di.driver = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    di.IO_address = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    di.scan_time = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    
+                    di.onoff_scan = bool.Parse(attribute.Value);
+                    
+                    di.tag_name = listaDI.FirstNode.ToString();
+                    dIs.Add(di.tag_name, di);
+                    listaDI = (XElement)listaDI.NextNode;
+                } while (listaDI!=null);
+                lista = (XElement)lista.NextNode;
+                XElement listaDO = (XElement)lista.FirstNode;
+                do
+                {
+                    DO ao = new DO();
+                    var attribute = listaDO.FirstAttribute;
+                    ao.description = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    ao.IO_adress = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    ao.initial_value = attribute.Value;
+                    
+                    ao.tag_name = listaDO.FirstNode.ToString();
+                    dOs.Add(ao.tag_name, ao);
+                    listaDO = (XElement)listaDO.NextNode;
+                } while (listaDO!=null);
+            }
         }
 
         public bool PravljanjeTaga(AI aI,string token)

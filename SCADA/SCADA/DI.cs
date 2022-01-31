@@ -13,6 +13,6 @@ namespace SCADA
         public string driver { get; set; }
         public string IO_address {get;set;}
         public string scan_time { get; set; }
-        public string onoff_scan { get; set; }
+        public bool onoff_scan { get; set; }
     }
 }
