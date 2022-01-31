@@ -10,7 +10,7 @@ namespace SCADA
     {
         public string tag_name { get; set; }
         public string description { get; set; }
-        public string IO_adress { get; set; }
-        public string initial_value { get; set; }
+        public string IO_address { get; set; }
+        public string inital_value { get; set; }
     }
 }

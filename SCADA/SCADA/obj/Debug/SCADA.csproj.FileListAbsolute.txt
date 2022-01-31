@@ -10,3 +10,5 @@ C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\D
 C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.csproj.CopyComplete
 C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.dll
 C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\obj\Debug\SCADA.pdb
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\Simulation_Driver.dll
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\SCADA\bin\Simulation_Driver.pdb

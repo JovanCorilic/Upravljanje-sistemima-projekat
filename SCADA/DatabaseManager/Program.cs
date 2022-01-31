@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DatabaseManager
 {
@@ -10,6 +11,7 @@ namespace DatabaseManager
     {
         static void Main(string[] args)
         {
+            
             string token = "";
             ServiceReference.AuthenticationClient authProxy = new ServiceReference.AuthenticationClient();
             while (true)

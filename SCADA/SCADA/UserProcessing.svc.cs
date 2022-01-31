@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using Simulation_Driver;
 
@@ -27,10 +28,43 @@ namespace SCADA
             
         }
 
-        private void ispisXML()
+        private void sacuvajXML()
         {
-            XElement xElement = new XElement("");
-            xElement.Add(new XElement("",new XAttribute("","dwdw"),new XAttribute("","")));
+            XElement xElement = new XElement("SCADA konfiguracija");
+            
+            XElement ai = new XElement("AI");
+            foreach(AI i in aIs.Values)
+            {
+                ai.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("driver", i.driver), new XAttribute("IO_address", i.IO_address),
+                    new XAttribute("scan_time", i.scan_time), new XAttribute("alarms", i.alarms), new XAttribute("onoff_scan", i.onoff_scan), new XAttribute("low_limit", i.low_limit),
+                    new XAttribute("high_limit", i.high_limit), new XAttribute("units", i.units)));
+            }
+            xElement.Add(ai);
+            XElement ao = new XElement("AO");
+            foreach(AO i in aOs.Values)
+            {
+                ao.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("IO_address", i.IO_address),
+                    new XAttribute("inital_value", i.inital_value), new XAttribute("low_limit", i.low_limit),
+                    new XAttribute("high_limit", i.high_limit), new XAttribute("units", i.units)));
+            }
+            xElement.Add(ao);
+            XElement di = new XElement("DI");
+            foreach(DI i in dIs.Values)
+            {
+                di.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("driver", i.driver), new XAttribute("IO_address", i.IO_address),
+                    new XAttribute("scan_time", i.scan_time), new XAttribute("onoff_scan", i.onoff_scan)));
+            }
+            xElement.Add(di);
+            XElement dO = new XElement("DO");
+            foreach(DO i in dOs.Values)
+            {
+                dO.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("IO_address", i.IO_address),
+                    new XAttribute("inital_value", i.inital_value)));
+            }
+            
+            xElement.Add(dO);
+            xElement.Save("scadaConfig.xml");
+
         }
 
         private void ucitavanjeXML()
@@ -122,9 +156,9 @@ namespace SCADA
                     var attribute = listaDO.FirstAttribute;
                     ao.description = attribute.Value;
                     attribute = attribute.NextAttribute;
-                    ao.IO_adress = attribute.Value;
+                    ao.IO_address = attribute.Value;
                     attribute = attribute.NextAttribute;
-                    ao.initial_value = attribute.Value;
+                    ao.inital_value = attribute.Value;
                     
                     ao.tag_name = listaDO.FirstNode.ToString();
                     dOs.Add(ao.tag_name, ao);
