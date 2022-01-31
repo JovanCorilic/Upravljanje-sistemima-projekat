@@ -13,6 +13,8 @@ namespace SCADA
     {
         [OperationContract]
         void DoWork();
+        [OperationContract]
+        bool PravljanjeTaga(AI aI, string token);
     }
 
     [ServiceContract]

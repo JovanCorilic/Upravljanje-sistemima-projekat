@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
+using Simulation_Driver;
 
 namespace SCADA
 {
@@ -16,6 +17,20 @@ namespace SCADA
 
         public void DoWork()
         {
+            
+            
+        }
+
+        public bool PravljanjeTaga(AI aI,string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+
+                return true;
+            }
+            else
+                return false;
+            
         }
 
         public string Login(string username, string password)
@@ -112,6 +127,6 @@ namespace SCADA
             return authenticatedUsers.ContainsKey(token);
         }
 
-
+        
     }
 }
