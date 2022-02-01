@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
 namespace DatabaseManager
 {
     class Program
@@ -13,7 +14,8 @@ namespace DatabaseManager
         {
             
             string token = "";
-            ServiceReference.AuthenticationClient authProxy = new ServiceReference.AuthenticationClient();
+            ServiceReference.UserProcessingClient proxy = new ServiceReference.UserProcessingClient();
+            
             while (true)
             {
                 Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.Registracija\n2.Login\n3.Logout");
@@ -28,7 +30,7 @@ namespace DatabaseManager
                     string username=Console.ReadLine();
                     Console.WriteLine("Password:");
                     string password = Console.ReadLine();
-                    if (authProxy.Registration(username, password))
+                    if (proxy.Registration(username, password))
                         Console.WriteLine("Uspesno registrovan!");
                     else
                         Console.WriteLine("Neuspesno!");
@@ -39,13 +41,37 @@ namespace DatabaseManager
                     string username = Console.ReadLine();
                     Console.WriteLine("Password:");
                     string password = Console.ReadLine();
-                    token = authProxy.Login(username, password);
+                    token = proxy.Login(username, password);
                     if (String.Equals(token, "Login failed"))
                         Console.WriteLine(token);
                 }
                 else if (broj == 3)
                 {
-                    authProxy.Logout(token);
+                    proxy.Logout(token);
+                }
+                else if(broj == 4)
+                {
+                    PravljenjeTagova(proxy);
+                }
+            }
+        }
+
+        static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy)
+        {
+            while (true)
+            {
+                Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.AI tag\n2.AO tag\n3.DI tag\n4.DO tag");
+                int broj1 = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
+                Console.WriteLine();
+                if (broj1 == 0)
+                {
+                    break;
+                }
+                else if (broj1 == 1)
+                {
+                    ServiceReference.AI aI = new ServiceReference.AI();
+                    
+
                 }
             }
         }

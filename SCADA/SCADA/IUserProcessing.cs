@@ -14,12 +14,7 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
-        bool PravljanjeTaga(AI aI, string token);
-    }
-
-    [ServiceContract]
-    public interface IAuthentication
-    {
+        void pravljenjeTaga(AI aI,string token);
         [OperationContract]
         bool Registration(string username, string password);
         [OperationContract]
@@ -27,5 +22,7 @@ namespace SCADA
         [OperationContract]
         bool Logout(string token);
     }
+
+    
 
 }

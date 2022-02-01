@@ -4,44 +4,83 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:59065/UserProcessing.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:59065/UserProcessing.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:59065/UserProcessing.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SCADA" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IAuthentication_Registration_InputMessage">
+  <wsdl:message name="IUserProcessing_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_pravljenjeTaga_InputMessage">
+    <wsdl:part name="parameters" element="tns:pravljenjeTaga" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_pravljenjeTaga_OutputMessage">
+    <wsdl:part name="parameters" element="tns:pravljenjeTagaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_Registration_InputMessage">
     <wsdl:part name="parameters" element="tns:Registration" />
   </wsdl:message>
-  <wsdl:message name="IAuthentication_Registration_OutputMessage">
+  <wsdl:message name="IUserProcessing_Registration_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrationResponse" />
   </wsdl:message>
-  <wsdl:message name="IAuthentication_Login_InputMessage">
+  <wsdl:message name="IUserProcessing_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
-  <wsdl:message name="IAuthentication_Login_OutputMessage">
+  <wsdl:message name="IUserProcessing_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
-  <wsdl:message name="IAuthentication_Logout_InputMessage">
+  <wsdl:message name="IUserProcessing_Logout_InputMessage">
     <wsdl:part name="parameters" element="tns:Logout" />
   </wsdl:message>
-  <wsdl:message name="IAuthentication_Logout_OutputMessage">
+  <wsdl:message name="IUserProcessing_Logout_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogoutResponse" />
   </wsdl:message>
-  <wsdl:portType name="IAuthentication">
+  <wsdl:portType name="IUserProcessing">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/DoWork" message="tns:IUserProcessing_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/DoWorkResponse" message="tns:IUserProcessing_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="pravljenjeTaga">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/pravljenjeTaga" message="tns:IUserProcessing_pravljenjeTaga_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse" message="tns:IUserProcessing_pravljenjeTaga_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Registration">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthentication/Registration" message="tns:IAuthentication_Registration_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthentication/RegistrationResponse" message="tns:IAuthentication_Registration_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/Registration" message="tns:IUserProcessing_Registration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/RegistrationResponse" message="tns:IUserProcessing_Registration_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Login">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthentication/Login" message="tns:IAuthentication_Login_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthentication/LoginResponse" message="tns:IAuthentication_Login_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/Login" message="tns:IUserProcessing_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/LoginResponse" message="tns:IUserProcessing_Login_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Logout">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthentication/Logout" message="tns:IAuthentication_Logout_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthentication/LogoutResponse" message="tns:IAuthentication_Logout_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/Logout" message="tns:IUserProcessing_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/LogoutResponse" message="tns:IUserProcessing_Logout_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IAuthentication" type="tns:IAuthentication">
+  <wsdl:binding name="BasicHttpBinding_IUserProcessing" type="tns:IUserProcessing">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pravljenjeTaga">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/pravljenjeTaga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Registration">
-      <soap:operation soapAction="http://tempuri.org/IAuthentication/Registration" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/Registration" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -50,7 +89,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Login">
-      <soap:operation soapAction="http://tempuri.org/IAuthentication/Login" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/Login" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -59,7 +98,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Logout">
-      <soap:operation soapAction="http://tempuri.org/IAuthentication/Logout" style="document" />
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/Logout" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -69,8 +108,8 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UserProcessing">
-    <wsdl:port name="BasicHttpBinding_IAuthentication" binding="tns:BasicHttpBinding_IAuthentication">
-      <soap:address location="http://localhost:59065/UserProcessing.svc/Authentication" />
+    <wsdl:port name="BasicHttpBinding_IUserProcessing" binding="tns:BasicHttpBinding_IUserProcessing">
+      <soap:address location="http://localhost:59065/UserProcessing.svc/UserProcessing" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

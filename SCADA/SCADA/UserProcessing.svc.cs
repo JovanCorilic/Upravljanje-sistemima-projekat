@@ -14,7 +14,7 @@ namespace SCADA
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "UserProcessing" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select UserProcessing.svc or UserProcessing.svc.cs at the Solution Explorer and start debugging.
-    public class UserProcessing : IUserProcessing,IAuthentication
+    public class UserProcessing : IUserProcessing
     {
         private static Dictionary<string, User> authenticatedUsers = new Dictionary<string, User>();
         private static Dictionary<string, AI> aIs = new Dictionary<string, AI>();
@@ -25,6 +25,16 @@ namespace SCADA
         public void DoWork()
         {
             
+            
+        }
+
+        public void pravljenjeTaga(AI aI,string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                
+                
+            }
             
         }
 
