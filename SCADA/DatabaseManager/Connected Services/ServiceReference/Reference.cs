@@ -202,6 +202,365 @@ namespace DatabaseManager.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AO", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
+    [System.SerializableAttribute()]
+    public partial class AO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IO_addressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string high_limitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string inital_valueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string low_limitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tag_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string unitsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IO_address {
+            get {
+                return this.IO_addressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IO_addressField, value) != true)) {
+                    this.IO_addressField = value;
+                    this.RaisePropertyChanged("IO_address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string high_limit {
+            get {
+                return this.high_limitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.high_limitField, value) != true)) {
+                    this.high_limitField = value;
+                    this.RaisePropertyChanged("high_limit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string inital_value {
+            get {
+                return this.inital_valueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.inital_valueField, value) != true)) {
+                    this.inital_valueField = value;
+                    this.RaisePropertyChanged("inital_value");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string low_limit {
+            get {
+                return this.low_limitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.low_limitField, value) != true)) {
+                    this.low_limitField = value;
+                    this.RaisePropertyChanged("low_limit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tag_name {
+            get {
+                return this.tag_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tag_nameField, value) != true)) {
+                    this.tag_nameField = value;
+                    this.RaisePropertyChanged("tag_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string units {
+            get {
+                return this.unitsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.unitsField, value) != true)) {
+                    this.unitsField = value;
+                    this.RaisePropertyChanged("units");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DI", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
+    [System.SerializableAttribute()]
+    public partial class DI : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IO_addressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string driverField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool onoff_scanField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string scan_timeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tag_nameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IO_address {
+            get {
+                return this.IO_addressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IO_addressField, value) != true)) {
+                    this.IO_addressField = value;
+                    this.RaisePropertyChanged("IO_address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string driver {
+            get {
+                return this.driverField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.driverField, value) != true)) {
+                    this.driverField = value;
+                    this.RaisePropertyChanged("driver");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool onoff_scan {
+            get {
+                return this.onoff_scanField;
+            }
+            set {
+                if ((this.onoff_scanField.Equals(value) != true)) {
+                    this.onoff_scanField = value;
+                    this.RaisePropertyChanged("onoff_scan");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string scan_time {
+            get {
+                return this.scan_timeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.scan_timeField, value) != true)) {
+                    this.scan_timeField = value;
+                    this.RaisePropertyChanged("scan_time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tag_name {
+            get {
+                return this.tag_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tag_nameField, value) != true)) {
+                    this.tag_nameField = value;
+                    this.RaisePropertyChanged("tag_name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DO", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
+    [System.SerializableAttribute()]
+    public partial class DO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IO_addressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string inital_valueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tag_nameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IO_address {
+            get {
+                return this.IO_addressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IO_addressField, value) != true)) {
+                    this.IO_addressField = value;
+                    this.RaisePropertyChanged("IO_address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string inital_value {
+            get {
+                return this.inital_valueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.inital_valueField, value) != true)) {
+                    this.inital_valueField = value;
+                    this.RaisePropertyChanged("inital_value");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tag_name {
+            get {
+                return this.tag_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tag_nameField, value) != true)) {
+                    this.tag_nameField = value;
+                    this.RaisePropertyChanged("tag_name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IUserProcessing")]
     public interface IUserProcessing {
@@ -213,10 +572,14 @@ namespace DatabaseManager.ServiceReference {
         System.Threading.Tasks.Task DoWorkAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/pravljenjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse")]
-        void pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, string token);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AI))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DI))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DO))]
+        void pravljenjeTaga(object temp, int brojTag, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/pravljenjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse")]
-        System.Threading.Tasks.Task pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, string token);
+        System.Threading.Tasks.Task pravljenjeTagaAsync(object temp, int brojTag, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/Registration", ReplyAction="http://tempuri.org/IUserProcessing/RegistrationResponse")]
         bool Registration(string username, string password);
@@ -235,6 +598,12 @@ namespace DatabaseManager.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/Logout", ReplyAction="http://tempuri.org/IUserProcessing/LogoutResponse")]
         System.Threading.Tasks.Task<bool> LogoutAsync(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/prenosTipa", ReplyAction="http://tempuri.org/IUserProcessing/prenosTipaResponse")]
+        void prenosTipa(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/prenosTipa", ReplyAction="http://tempuri.org/IUserProcessing/prenosTipaResponse")]
+        System.Threading.Tasks.Task prenosTipaAsync(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -272,12 +641,12 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.DoWorkAsync();
         }
         
-        public void pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, string token) {
-            base.Channel.pravljenjeTaga(aI, token);
+        public void pravljenjeTaga(object temp, int brojTag, string token) {
+            base.Channel.pravljenjeTaga(temp, brojTag, token);
         }
         
-        public System.Threading.Tasks.Task pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, string token) {
-            return base.Channel.pravljenjeTagaAsync(aI, token);
+        public System.Threading.Tasks.Task pravljenjeTagaAsync(object temp, int brojTag, string token) {
+            return base.Channel.pravljenjeTagaAsync(temp, brojTag, token);
         }
         
         public bool Registration(string username, string password) {
@@ -302,6 +671,14 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> LogoutAsync(string token) {
             return base.Channel.LogoutAsync(token);
+        }
+        
+        public void prenosTipa(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO) {
+            base.Channel.prenosTipa(aI, aO, dI, dO);
+        }
+        
+        public System.Threading.Tasks.Task prenosTipaAsync(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO) {
+            return base.Channel.prenosTipaAsync(aI, aO, dI, dO);
         }
     }
 }

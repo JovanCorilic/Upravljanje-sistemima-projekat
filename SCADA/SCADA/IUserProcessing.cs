@@ -14,13 +14,15 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
-        void pravljenjeTaga(AI aI,string token);
+        void pravljenjeTaga(object temp, int brojTag,string token);
         [OperationContract]
         bool Registration(string username, string password);
         [OperationContract]
         string Login(string username, string password);
         [OperationContract]
         bool Logout(string token);
+        [OperationContract]
+        void prenosTipa(AI aI, AO aO, DI dI, DO dO);
     }
 
     

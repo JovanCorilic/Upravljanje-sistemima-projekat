@@ -51,12 +51,12 @@ namespace DatabaseManager
                 }
                 else if(broj == 4)
                 {
-                    PravljenjeTagova(proxy);
+                    PravljenjeTagova(proxy,token);
                 }
             }
         }
 
-        static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy)
+        static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy,string token)
         {
             while (true)
             {
@@ -69,9 +69,90 @@ namespace DatabaseManager
                 }
                 else if (broj1 == 1)
                 {
-                    ServiceReference.AI aI = new ServiceReference.AI();
+                    ServiceReference.AI ai = new ServiceReference.AI();
+                    Console.WriteLine("Unesite tag name:");
+                    ai.tag_name=Console.ReadLine();
+                    Console.WriteLine("Unesite description:");
+                    ai.description = Console.ReadLine();
+                    Console.WriteLine("Unesite driver:");
+                    ai.driver = Console.ReadLine();
+                    Console.WriteLine("Unesite I/O addresu:");
+                    ai.IO_address = Console.ReadLine();
+                    Console.WriteLine("Unesite scan time:");
+                    ai.scan_time = Console.ReadLine();
+                    ai.alarms = "";
+                    Console.WriteLine("On/Off scan:");
+                    if (String.Equals(Console.ReadLine(), "on"))
+                    {
+                        ai.onoff_scan = true;
+                    }else if (String.Equals(Console.ReadLine(), "off"))
+                    {
+                        ai.onoff_scan = false;
+                    }
+                    Console.WriteLine("Unesite low limit:");
+                    ai.low_limit = Console.ReadLine();
+                    Console.WriteLine("Unesite high limit:");
+                    ai.high_limit = Console.ReadLine();
+                    Console.WriteLine("Unesite units:");
+                    ai.units = Console.ReadLine();
+                    proxy.pravljenjeTaga(ai, broj1, token);
+                }
+                else if (broj1 == 2)
+                {
+                    ServiceReference.AO ao = new ServiceReference.AO();
+                    Console.WriteLine("Unesite tag name:");
+                    ao.tag_name = Console.ReadLine();
+                    Console.WriteLine("Unesite description:");
+                    ao.description = Console.ReadLine();
                     
-
+                    Console.WriteLine("Unesite I/O addresu:");
+                    ao.IO_address = Console.ReadLine();
+                    ao.inital_value = "";
+                    
+                    Console.WriteLine("Unesite low limit:");
+                    ao.low_limit = Console.ReadLine();
+                    Console.WriteLine("Unesite high limit:");
+                    ao.high_limit = Console.ReadLine();
+                    Console.WriteLine("Unesite units:");
+                    ao.units = Console.ReadLine();
+                    proxy.pravljenjeTaga(ao, broj1, token);
+                }
+                else if (broj1 == 3)
+                {
+                    ServiceReference.DI di = new ServiceReference.DI();
+                    Console.WriteLine("Unesite tag name:");
+                    di.tag_name = Console.ReadLine();
+                    Console.WriteLine("Unesite description:");
+                    di.description = Console.ReadLine();
+                    Console.WriteLine("Unesite driver:");
+                    di.driver = Console.ReadLine();
+                    Console.WriteLine("Unesite I/O addresu:");
+                    di.IO_address = Console.ReadLine();
+                    Console.WriteLine("Unesite scan time:");
+                    di.scan_time = Console.ReadLine();
+                    
+                    Console.WriteLine("On/Off scan:");
+                    if (String.Equals(Console.ReadLine(), "on"))
+                    {
+                        di.onoff_scan = true;
+                    }
+                    else if (String.Equals(Console.ReadLine(), "off"))
+                    {
+                        di.onoff_scan = false;
+                    }
+                    proxy.pravljenjeTaga(di, broj1, token);
+                }
+                else if (broj1 == 4)
+                {
+                    ServiceReference.DO dO = new ServiceReference.DO();
+                    Console.WriteLine("Unesite tag name:");
+                    dO.tag_name = Console.ReadLine();
+                    Console.WriteLine("Unesite description:");
+                    dO.description = Console.ReadLine();
+                    
+                    Console.WriteLine("Unesite I/O addresu:");
+                    dO.IO_address = Console.ReadLine();
+                    proxy.pravljenjeTaga(dO, broj1, token);
                 }
             }
         }

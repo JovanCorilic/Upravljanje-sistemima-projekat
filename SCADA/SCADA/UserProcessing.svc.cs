@@ -28,7 +28,7 @@ namespace SCADA
             
         }
 
-        public void pravljenjeTaga(AI aI,string token)
+        public void pravljenjeTaga(object temp, int brojTag, string token)
         {
             if (IsUserAuthenticated(token))
             {
@@ -177,17 +177,7 @@ namespace SCADA
             }
         }
 
-        public bool PravljanjeTaga(AI aI,string token)
-        {
-            if (IsUserAuthenticated(token))
-            {
-
-                return true;
-            }
-            else
-                return false;
-            
-        }
+        
 
         public string Login(string username, string password)
         {
@@ -283,6 +273,9 @@ namespace SCADA
             return authenticatedUsers.ContainsKey(token);
         }
 
-        
+        public void prenosTipa(AI aI, AO aO, DI dI, DO dO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

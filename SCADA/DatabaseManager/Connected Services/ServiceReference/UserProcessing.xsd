@@ -15,4 +15,36 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AI" nillable="true" type="tns:AI" />
+  <xs:complexType name="AO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IO_address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="high_limit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="inital_value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="low_limit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tag_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="units" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AO" nillable="true" type="tns:AO" />
+  <xs:complexType name="DI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IO_address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="driver" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="onoff_scan" type="xs:boolean" />
+      <xs:element minOccurs="0" name="scan_time" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tag_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DI" nillable="true" type="tns:DI" />
+  <xs:complexType name="DO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IO_address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="inital_value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tag_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DO" nillable="true" type="tns:DO" />
 </xs:schema>
