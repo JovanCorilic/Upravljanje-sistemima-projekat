@@ -24,5 +24,10 @@ namespace SCADA
         public string high_limit { get; set; }
         [DataMember]
         public string units { get; set; }
+        public override string ToString()
+        {
+            return "tag name: " + tag_name + ", description: " + description + ", I/O address: " + IO_address + ", initial value: "+inital_value+
+                ", low limit: " + low_limit + ", high limit: " + high_limit + ", units: " + units;
+        }
     }
 }

@@ -18,5 +18,9 @@ namespace SCADA
         public string IO_address { get; set; }
         [DataMember]
         public string inital_value { get; set; }
+        public override string ToString()
+        {
+            return "tag name: " + tag_name + ", description: " + description + ", I/O address: " + IO_address + ", initial value: " + inital_value;
+        }
     }
 }
