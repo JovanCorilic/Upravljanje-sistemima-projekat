@@ -31,15 +31,23 @@ namespace SCADA
         {
             if (IsUserAuthenticated(token))
             {
-                string temp = "";
+                string temp1 = "Vrednosti analog output taga:\n";
+                string temp2 = "Vrednosti digital output taga:\n";
                 using(var db = new TagsContext())
                 {
                     foreach(TagVrednost tagVrednost in db.tagVrednosts)
                     {
-
+                        if (aOs.ContainsKey(tagVrednost.tag_name))
+                        {
+                            temp1 += tagVrednost.ToString() + "\n";
+                        }
+                        else if (dOs.ContainsKey(tagVrednost.tag_name))
+                        {
+                            temp2 += tagVrednost.ToString() + "\n";
+                        }
                     }
                 }
-                return temp;
+                return temp1+temp2;
             }else
                 return "";
         }

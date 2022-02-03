@@ -15,5 +15,10 @@ namespace SCADA
         public TagVrednost()
         {
         }
+
+        public override string ToString()
+        {
+            return "Tag name " + tag_name + ", vrednost " + vrednost.ToString();
+        }
     }
 }
