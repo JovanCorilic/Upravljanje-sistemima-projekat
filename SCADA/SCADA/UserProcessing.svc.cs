@@ -27,6 +27,22 @@ namespace SCADA
             
             
         }
+        public string prikazVrednostiIzlaznihTagova(string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                string temp = "";
+                using(var db = new TagsContext())
+                {
+                    foreach(TagVrednost tagVrednost in db.tagVrednosts)
+                    {
+
+                    }
+                }
+                return temp;
+            }else
+                return "";
+        }
 
         public bool brisanjeTaga(string id,string token)
         {
@@ -35,25 +51,35 @@ namespace SCADA
                 if (aIs.ContainsKey(id))
                 {
                     aIs.Remove(id);
-                    return true;
                 }
                 else if (aOs.ContainsKey(id))
                 {
                     aOs.Remove(id);
-                    return true;
                 }
                 else if (dIs.ContainsKey(id))
                 {
                     dIs.Remove(id);
-                    return true;
                 }
                 else if (dOs.ContainsKey(id))
                 {
                     dOs.Remove(id);
-                    return true;
                 }
                 else
                     return false;
+                using (var db = new TagsContext())
+                {
+                    try
+                    {
+                        db.tagVrednosts.Remove(db.tagVrednosts.Find(id));
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
+
+                }
+                return true;
             }
             else
                 return false;
@@ -63,11 +89,17 @@ namespace SCADA
         {
             if (IsUserAuthenticated(token))
             {
+                string tagName = "";
+                string IO = "";
                 if (brojTag == 1)
                 {
                     AI aI = (AI)temp;
                     if (!aIs.ContainsKey(aI.tag_name))
+                    {
+                        tagName = aI.tag_name;
+                        IO = aI.IO_address;
                         aIs.Add(aI.tag_name, aI);
+                    }
                     else
                         return false;
                 }
@@ -75,7 +107,11 @@ namespace SCADA
                 {
                     AO aO = (AO)temp;
                     if (!aOs.ContainsKey(aO.tag_name))
+                    {
+                        tagName = aO.tag_name;
+                        IO = aO.IO_address;
                         aOs.Add(aO.tag_name, aO);
+                    }
                     else
                         return false;
                 }
@@ -83,7 +119,11 @@ namespace SCADA
                 {
                     DI dI = (DI)temp;
                     if (!dIs.ContainsKey(dI.tag_name))
+                    {
+                        tagName = dI.tag_name;
+                        IO = dI.IO_address;
                         dIs.Add(dI.tag_name, dI);
+                    }
                     else
                         return false;
                 }
@@ -91,10 +131,33 @@ namespace SCADA
                 {
                     DO dO = (DO)temp;
                     if (!dOs.ContainsKey(dO.tag_name))
+                    {
+                        tagName = dO.tag_name;
+                        IO = dO.IO_address;
                         dOs.Add(dO.tag_name, dO);
+                    }
                     else
                         return false;
                 }
+                using(var db = new TagsContext())
+                {
+                    try
+                    {
+                        TagVrednost tagVrednost = new TagVrednost();
+                        tagVrednost.tag_name = tagName;
+                        tagVrednost.vrednost = SimulationDriver.ReturnValue(IO);
+                        if (aOs.ContainsKey(tagVrednost.tag_name))
+                            aOs[tagVrednost.tag_name].inital_value = tagVrednost.vrednost.ToString();
+                        else if (dOs.ContainsKey(tagVrednost.tag_name))
+                            dOs[tagVrednost.tag_name].inital_value = tagVrednost.vrednost.ToString();
+                        db.tagVrednosts.Add(tagVrednost);
+                        db.SaveChanges();
+                    }catch(Exception e) {
+                        return false;
+                    }
+                        
+                }
+                    
                 return true;
             }
             else

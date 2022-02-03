@@ -14,6 +14,8 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        string prikazVrednostiIzlaznihTagova(string token);
+        [OperationContract]
         bool pravljenjeTaga(object temp, int brojTag,string token);
         [OperationContract]
         bool brisanjeTaga(string id, string token);
