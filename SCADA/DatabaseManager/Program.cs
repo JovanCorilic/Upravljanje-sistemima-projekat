@@ -48,7 +48,7 @@ namespace DatabaseManager
                         ulogovan = true;
                 }
                 while (ulogovan) {
-                    Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.Logout\n2.Pravljenje taga\n3.Brisanje taga");
+                    Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.Logout\n2.Pravljenje taga\n3.Brisanje taga\n4.Prikaz vrednosti izlaznih tagova");
                     int broj1 = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
                     Console.WriteLine();
                     if (broj1 == 1)
@@ -68,6 +68,10 @@ namespace DatabaseManager
                             Console.WriteLine("Uspesno obrisan tag!");
                         else
                             Console.WriteLine("Neuspesno obrisan tag");
+                    }
+                    else if(broj1 == 4)
+                    {
+                        Console.WriteLine(proxy.prikazVrednostiIzlaznihTagova(token));
                     }
                 }
             }

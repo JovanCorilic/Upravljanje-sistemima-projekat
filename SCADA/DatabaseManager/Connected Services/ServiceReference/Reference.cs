@@ -571,6 +571,12 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/prikazVrednostiIzlaznihTagova", ReplyAction="http://tempuri.org/IUserProcessing/prikazVrednostiIzlaznihTagovaResponse")]
+        string prikazVrednostiIzlaznihTagova(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/prikazVrednostiIzlaznihTagova", ReplyAction="http://tempuri.org/IUserProcessing/prikazVrednostiIzlaznihTagovaResponse")]
+        System.Threading.Tasks.Task<string> prikazVrednostiIzlaznihTagovaAsync(string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/pravljenjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AI))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AO))]
@@ -645,6 +651,14 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task DoWorkAsync() {
             return base.Channel.DoWorkAsync();
+        }
+        
+        public string prikazVrednostiIzlaznihTagova(string token) {
+            return base.Channel.prikazVrednostiIzlaznihTagova(token);
+        }
+        
+        public System.Threading.Tasks.Task<string> prikazVrednostiIzlaznihTagovaAsync(string token) {
+            return base.Channel.prikazVrednostiIzlaznihTagovaAsync(token);
         }
         
         public bool pravljenjeTaga(object temp, int brojTag, string token) {
