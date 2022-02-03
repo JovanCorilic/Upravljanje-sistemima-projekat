@@ -28,13 +28,77 @@ namespace SCADA
             
         }
 
-        public void pravljenjeTaga(object temp, int brojTag, string token)
+        public bool brisanjeTaga(string id,string token)
         {
             if (IsUserAuthenticated(token))
             {
-                
-                
+                if (aIs.ContainsKey(id))
+                {
+                    aIs.Remove(id);
+                    return true;
+                }
+                else if (aOs.ContainsKey(id))
+                {
+                    aOs.Remove(id);
+                    return true;
+                }
+                else if (dIs.ContainsKey(id))
+                {
+                    dIs.Remove(id);
+                    return true;
+                }
+                else if (dOs.ContainsKey(id))
+                {
+                    dOs.Remove(id);
+                    return true;
+                }
+                else
+                    return false;
             }
+            else
+                return false;
+        }
+
+        public bool pravljenjeTaga(object temp, int brojTag, string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                if (brojTag == 1)
+                {
+                    AI aI = (AI)temp;
+                    if (!aIs.ContainsKey(aI.tag_name))
+                        aIs.Add(aI.tag_name, aI);
+                    else
+                        return false;
+                }
+                else if (brojTag == 2)
+                {
+                    AO aO = (AO)temp;
+                    if (!aOs.ContainsKey(aO.tag_name))
+                        aOs.Add(aO.tag_name, aO);
+                    else
+                        return false;
+                }
+                else if (brojTag == 3)
+                {
+                    DI dI = (DI)temp;
+                    if (!dIs.ContainsKey(dI.tag_name))
+                        dIs.Add(dI.tag_name, dI);
+                    else
+                        return false;
+                }
+                else if (brojTag == 4)
+                {
+                    DO dO = (DO)temp;
+                    if (!dOs.ContainsKey(dO.tag_name))
+                        dOs.Add(dO.tag_name, dO);
+                    else
+                        return false;
+                }
+                return true;
+            }
+            else
+                return false;
             
         }
 

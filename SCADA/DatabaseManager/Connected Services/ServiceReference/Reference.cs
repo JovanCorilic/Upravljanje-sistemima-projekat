@@ -576,10 +576,16 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DI))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DO))]
-        void pravljenjeTaga(object temp, int brojTag, string token);
+        bool pravljenjeTaga(object temp, int brojTag, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/pravljenjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse")]
-        System.Threading.Tasks.Task pravljenjeTagaAsync(object temp, int brojTag, string token);
+        System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(object temp, int brojTag, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeTagaResponse")]
+        bool brisanjeTaga(string id, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeTagaResponse")]
+        System.Threading.Tasks.Task<bool> brisanjeTagaAsync(string id, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/Registration", ReplyAction="http://tempuri.org/IUserProcessing/RegistrationResponse")]
         bool Registration(string username, string password);
@@ -641,12 +647,20 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.DoWorkAsync();
         }
         
-        public void pravljenjeTaga(object temp, int brojTag, string token) {
-            base.Channel.pravljenjeTaga(temp, brojTag, token);
+        public bool pravljenjeTaga(object temp, int brojTag, string token) {
+            return base.Channel.pravljenjeTaga(temp, brojTag, token);
         }
         
-        public System.Threading.Tasks.Task pravljenjeTagaAsync(object temp, int brojTag, string token) {
+        public System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(object temp, int brojTag, string token) {
             return base.Channel.pravljenjeTagaAsync(temp, brojTag, token);
+        }
+        
+        public bool brisanjeTaga(string id, string token) {
+            return base.Channel.brisanjeTaga(id, token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> brisanjeTagaAsync(string id, string token) {
+            return base.Channel.brisanjeTagaAsync(id, token);
         }
         
         public bool Registration(string username, string password) {

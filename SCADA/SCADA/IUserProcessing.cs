@@ -14,7 +14,9 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
-        void pravljenjeTaga(object temp, int brojTag,string token);
+        bool pravljenjeTaga(object temp, int brojTag,string token);
+        [OperationContract]
+        bool brisanjeTaga(string id, string token);
         [OperationContract]
         bool Registration(string username, string password);
         [OperationContract]

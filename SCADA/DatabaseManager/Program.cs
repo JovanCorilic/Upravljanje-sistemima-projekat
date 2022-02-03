@@ -15,10 +15,10 @@ namespace DatabaseManager
             
             string token = "";
             ServiceReference.UserProcessingClient proxy = new ServiceReference.UserProcessingClient();
-            
+            bool ulogovan = false;
             while (true)
             {
-                Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.Registracija\n2.Login\n3.Logout");
+                Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.Registracija\n2.Login");
                 int broj = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
                 Console.WriteLine();
                 if (broj == 0)
@@ -44,14 +44,31 @@ namespace DatabaseManager
                     token = proxy.Login(username, password);
                     if (String.Equals(token, "Login failed"))
                         Console.WriteLine(token);
+                    else
+                        ulogovan = true;
                 }
-                else if (broj == 3)
-                {
-                    proxy.Logout(token);
-                }
-                else if(broj == 4)
-                {
-                    PravljenjeTagova(proxy,token);
+                while (ulogovan) {
+                    Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.Logout\n2.Pravljenje taga\n3.Brisanje taga");
+                    int broj1 = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
+                    Console.WriteLine();
+                    if (broj1 == 1)
+                    {
+                        proxy.Logout(token);
+                        ulogovan = false;
+                    }
+                    else if (broj1 == 2)
+                    {
+                        PravljenjeTagova(proxy, token);
+                    }
+                    else if (broj1 == 3)
+                    {
+                        Console.WriteLine("Unesite naziv taga:");
+                        string temp = Console.ReadLine();
+                        if (proxy.brisanjeTaga(temp, token))
+                            Console.WriteLine("Uspesno obrisan tag!");
+                        else
+                            Console.WriteLine("Neuspesno obrisan tag");
+                    }
                 }
             }
         }
@@ -95,7 +112,10 @@ namespace DatabaseManager
                     ai.high_limit = Console.ReadLine();
                     Console.WriteLine("Unesite units:");
                     ai.units = Console.ReadLine();
-                    proxy.pravljenjeTaga(ai, broj1, token);
+                    if (proxy.pravljenjeTaga(ai, broj1, token))
+                        Console.WriteLine("Uspesno napravljen AI tag.");
+                    else
+                        Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }
                 else if (broj1 == 2)
                 {
@@ -115,7 +135,10 @@ namespace DatabaseManager
                     ao.high_limit = Console.ReadLine();
                     Console.WriteLine("Unesite units:");
                     ao.units = Console.ReadLine();
-                    proxy.pravljenjeTaga(ao, broj1, token);
+                    if(proxy.pravljenjeTaga(ao, broj1, token))
+                            Console.WriteLine("Uspesno napravljen AO tag.");
+                    else
+                        Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }
                 else if (broj1 == 3)
                 {
@@ -140,7 +163,10 @@ namespace DatabaseManager
                     {
                         di.onoff_scan = false;
                     }
-                    proxy.pravljenjeTaga(di, broj1, token);
+                    if (proxy.pravljenjeTaga(di, broj1, token))
+                        Console.WriteLine("Uspesno napravljen DI tag.");
+                    else
+                        Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }
                 else if (broj1 == 4)
                 {
@@ -152,7 +178,10 @@ namespace DatabaseManager
                     
                     Console.WriteLine("Unesite I/O addresu:");
                     dO.IO_address = Console.ReadLine();
-                    proxy.pravljenjeTaga(dO, broj1, token);
+                    if (proxy.pravljenjeTaga(dO, broj1, token))
+                        Console.WriteLine("Uspesno napravljen DO tag.");
+                    else
+                        Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }
             }
         }
