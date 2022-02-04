@@ -43,6 +43,7 @@ namespace SCADA
                     {
                         db.tagVrednosts.Find(tag_name).vrednost = SimulationDriver.ReturnValue(IO);
                         db.SaveChanges();
+                        
                         return "Uspesno promenjena vrednost";
                     }
                     catch (Exception e)
@@ -65,11 +66,13 @@ namespace SCADA
                     if (aIs[tag_name].onoff_scan)
                     {
                         aIs[tag_name].onoff_scan = false;
+                        sacuvajXML();
                         return "Skeniranje iskljuceno";
                     }
                     else
                     {
                         aIs[tag_name].onoff_scan = true;
+                        sacuvajXML();
                         return "Skeniranje ukljuceno";
                     }
                 }
@@ -78,11 +81,13 @@ namespace SCADA
                     if (dIs[tag_name].onoff_scan)
                     {
                         dIs[tag_name].onoff_scan = false;
+                        sacuvajXML();
                         return "Skeniranje iskljuceno";
                     }
                     else
                     {
                         dIs[tag_name].onoff_scan = true;
+                        sacuvajXML();
                         return "Skeniranje ukljuceno";
                     }
                 }
@@ -152,6 +157,7 @@ namespace SCADA
                     }
 
                 }
+                sacuvajXML();
                 return true;
             }
             else
@@ -230,7 +236,7 @@ namespace SCADA
                     }
                         
                 }
-                    
+                sacuvajXML();    
                 return true;
             }
             else
