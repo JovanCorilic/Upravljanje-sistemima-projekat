@@ -24,9 +24,38 @@ namespace SCADA
 
         public void DoWork()
         {
-            
-            
+
+
         }
+        public string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token){
+            if (IsUserAuthenticated(token))
+            {
+                string IO = "";
+                if (aOs.ContainsKey(tag_name))
+                    IO = aOs[tag_name].IO_address;
+                else if (dOs.ContainsKey(tag_name))
+                    IO = dOs[tag_name].IO_address;
+                else
+                    return "Ne postoji tag sa tim nazivom";
+                using (var db = new TagsContext())
+                {
+                    try
+                    {
+                        db.tagVrednosts.Find(tag_name).vrednost = SimulationDriver.ReturnValue(IO);
+                        db.SaveChanges();
+                        return "Uspesno promenjena vrednost";
+                    }
+                    catch (Exception e)
+                    {
+                        return "Error";
+                    }
+                }
+            }
+            else
+                return "Niste autentifikovani";
+
+        }
+
         public string ukljucivanjeIsklucivanjeScan(string tag_name, string token)
         {
             if (IsUserAuthenticated(token))

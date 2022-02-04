@@ -14,6 +14,8 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token);
+        [OperationContract]
         string ukljucivanjeIsklucivanjeScan(string tag_name, string token);
         [OperationContract]
         string prikazVrednostiIzlaznihTagova(string token);

@@ -571,6 +571,12 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTaga", ReplyAction="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTagaResponse")]
+        string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTaga", ReplyAction="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTagaResponse")]
+        System.Threading.Tasks.Task<string> upisivanjeVrednostiIzlaznogTagaAsync(string tag_name, string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/ukljucivanjeIsklucivanjeScan", ReplyAction="http://tempuri.org/IUserProcessing/ukljucivanjeIsklucivanjeScanResponse")]
         string ukljucivanjeIsklucivanjeScan(string tag_name, string token);
         
@@ -657,6 +663,14 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task DoWorkAsync() {
             return base.Channel.DoWorkAsync();
+        }
+        
+        public string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token) {
+            return base.Channel.upisivanjeVrednostiIzlaznogTaga(tag_name, token);
+        }
+        
+        public System.Threading.Tasks.Task<string> upisivanjeVrednostiIzlaznogTagaAsync(string tag_name, string token) {
+            return base.Channel.upisivanjeVrednostiIzlaznogTagaAsync(tag_name, token);
         }
         
         public string ukljucivanjeIsklucivanjeScan(string tag_name, string token) {
