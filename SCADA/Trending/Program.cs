@@ -10,6 +10,7 @@ namespace Trending
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
