@@ -8,6 +8,11 @@ using System.Text;
 namespace SCADA
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ITagProcessing" in both code and config file together.
+    public interface INotificationServiceCallBack
+    {
+        [OperationContract(IsOneWay = true)]
+        void OnNotificationSent(object tag, int brojTaga);
+    }
     [ServiceContract(CallbackContract = typeof(INotificationServiceCallBack))]
     public interface ITagProcessing
     {
@@ -19,11 +24,8 @@ namespace SCADA
         void TagProccesingInitalization();
 
     }
-    public interface INotificationServiceCallBack
-    {
-        [OperationContract(IsOneWay = true)]
-        void OnNotificationSent(object tag, int brojTaga);
-    }
+    
+
     [ServiceContract]
     public interface IDatabseManager
     {

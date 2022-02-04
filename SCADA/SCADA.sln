@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCADA", "SCADA\SCADA.csproj", "{516837FE-15A1-448D-BBF6-F6639976FDD3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trending", "Trending\Trending.csproj", "{DE748FD4-1D1A-4F02-9BC5-EEAB318E4A73}"
+	ProjectSection(ProjectDependencies) = postProject
+		{516837FE-15A1-448D-BBF6-F6639976FDD3} = {516837FE-15A1-448D-BBF6-F6639976FDD3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alarm-display", "Alarm-display\Alarm-display.csproj", "{95806798-EACD-4D1B-9E39-5AF481368F03}"
 EndProject
