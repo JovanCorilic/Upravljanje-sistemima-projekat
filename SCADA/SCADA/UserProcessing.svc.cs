@@ -27,6 +27,42 @@ namespace SCADA
             
             
         }
+        public string ukljucivanjeIsklucivanjeScan(string tag_name, string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                if (aIs.ContainsKey(tag_name))
+                {
+                    if (aIs[tag_name].onoff_scan)
+                    {
+                        aIs[tag_name].onoff_scan = false;
+                        return "Skeniranje iskljuceno";
+                    }
+                    else
+                    {
+                        aIs[tag_name].onoff_scan = true;
+                        return "Skeniranje ukljuceno";
+                    }
+                }
+                else if (dIs.ContainsKey(tag_name))
+                {
+                    if (dIs[tag_name].onoff_scan)
+                    {
+                        dIs[tag_name].onoff_scan = false;
+                        return "Skeniranje iskljuceno";
+                    }
+                    else
+                    {
+                        dIs[tag_name].onoff_scan = true;
+                        return "Skeniranje ukljuceno";
+                    }
+                }
+                else
+                    return "Tag sa tim nazivom ne postoji";
+            }
+            else
+                return "Losa verifikacija";
+        }
         public string prikazVrednostiIzlaznihTagova(string token)
         {
             if (IsUserAuthenticated(token))

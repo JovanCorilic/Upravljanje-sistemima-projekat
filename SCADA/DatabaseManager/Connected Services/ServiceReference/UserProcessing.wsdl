@@ -13,6 +13,12 @@
   <wsdl:message name="IUserProcessing_DoWork_OutputMessage">
     <wsdl:part name="parameters" element="tns:DoWorkResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserProcessing_ukljucivanjeIsklucivanjeScan_InputMessage">
+    <wsdl:part name="parameters" element="tns:ukljucivanjeIsklucivanjeScan" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_ukljucivanjeIsklucivanjeScan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ukljucivanjeIsklucivanjeScanResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserProcessing_prikazVrednostiIzlaznihTagova_InputMessage">
     <wsdl:part name="parameters" element="tns:prikazVrednostiIzlaznihTagova" />
   </wsdl:message>
@@ -60,6 +66,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/DoWork" message="tns:IUserProcessing_DoWork_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/DoWorkResponse" message="tns:IUserProcessing_DoWork_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ukljucivanjeIsklucivanjeScan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/ukljucivanjeIsklucivanjeScan" message="tns:IUserProcessing_ukljucivanjeIsklucivanjeScan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/ukljucivanjeIsklucivanjeScanResponse" message="tns:IUserProcessing_ukljucivanjeIsklucivanjeScan_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="prikazVrednostiIzlaznihTagova">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/prikazVrednostiIzlaznihTagova" message="tns:IUserProcessing_prikazVrednostiIzlaznihTagova_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/prikazVrednostiIzlaznihTagovaResponse" message="tns:IUserProcessing_prikazVrednostiIzlaznihTagova_OutputMessage" />
@@ -93,6 +103,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
       <soap:operation soapAction="http://tempuri.org/IUserProcessing/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ukljucivanjeIsklucivanjeScan">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/ukljucivanjeIsklucivanjeScan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
