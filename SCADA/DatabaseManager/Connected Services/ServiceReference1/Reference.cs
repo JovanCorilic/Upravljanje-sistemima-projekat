@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Trending.ServiceReference {
+namespace DatabaseManager.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -328,7 +328,7 @@ namespace Trending.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IDatabseManager")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IDatabseManager")]
     public interface IDatabseManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatabseManager/SendNotification", ReplyAction="http://tempuri.org/IDatabseManager/SendNotificationResponse")]
@@ -345,12 +345,12 @@ namespace Trending.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDatabseManagerChannel : Trending.ServiceReference.IDatabseManager, System.ServiceModel.IClientChannel {
+    public interface IDatabseManagerChannel : DatabaseManager.ServiceReference1.IDatabseManager, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DatabseManagerClient : System.ServiceModel.ClientBase<Trending.ServiceReference.IDatabseManager>, Trending.ServiceReference.IDatabseManager {
+    public partial class DatabseManagerClient : System.ServiceModel.ClientBase<DatabaseManager.ServiceReference1.IDatabseManager>, DatabaseManager.ServiceReference1.IDatabseManager {
         
         public DatabseManagerClient() {
         }
@@ -389,14 +389,14 @@ namespace Trending.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.ITagProcessing", CallbackContract=typeof(Trending.ServiceReference.ITagProcessingCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITagProcessing", CallbackContract=typeof(DatabaseManager.ServiceReference1.ITagProcessingCallback))]
     public interface ITagProcessing {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITagProcessing/DoWork", ReplyAction="http://tempuri.org/ITagProcessing/DoWorkResponse")]
-        void DoWork(Trending.ServiceReference.AI aI, Trending.ServiceReference.DI dI);
+        void DoWork(DatabaseManager.ServiceReference1.AI aI, DatabaseManager.ServiceReference1.DI dI);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITagProcessing/DoWork", ReplyAction="http://tempuri.org/ITagProcessing/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync(Trending.ServiceReference.AI aI, Trending.ServiceReference.DI dI);
+        System.Threading.Tasks.Task DoWorkAsync(DatabaseManager.ServiceReference1.AI aI, DatabaseManager.ServiceReference1.DI dI);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITagProcessing/TagProccesingInitalization", ReplyAction="http://tempuri.org/ITagProcessing/TagProccesingInitalizationResponse")]
         void TagProccesingInitalization();
@@ -413,12 +413,12 @@ namespace Trending.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITagProcessingChannel : Trending.ServiceReference.ITagProcessing, System.ServiceModel.IClientChannel {
+    public interface ITagProcessingChannel : DatabaseManager.ServiceReference1.ITagProcessing, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TagProcessingClient : System.ServiceModel.DuplexClientBase<Trending.ServiceReference.ITagProcessing>, Trending.ServiceReference.ITagProcessing {
+    public partial class TagProcessingClient : System.ServiceModel.DuplexClientBase<DatabaseManager.ServiceReference1.ITagProcessing>, DatabaseManager.ServiceReference1.ITagProcessing {
         
         public TagProcessingClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -440,11 +440,11 @@ namespace Trending.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void DoWork(Trending.ServiceReference.AI aI, Trending.ServiceReference.DI dI) {
+        public void DoWork(DatabaseManager.ServiceReference1.AI aI, DatabaseManager.ServiceReference1.DI dI) {
             base.Channel.DoWork(aI, dI);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync(Trending.ServiceReference.AI aI, Trending.ServiceReference.DI dI) {
+        public System.Threading.Tasks.Task DoWorkAsync(DatabaseManager.ServiceReference1.AI aI, DatabaseManager.ServiceReference1.DI dI) {
             return base.Channel.DoWorkAsync(aI, dI);
         }
         

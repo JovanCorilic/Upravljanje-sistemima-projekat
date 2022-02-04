@@ -11,15 +11,14 @@ namespace SCADA
     public interface INotificationServiceCallBack
     {
         [OperationContract(IsOneWay = true)]
-        void OnNotificationSent(object tag, int brojTaga);
+        void OnNotificationSent(string message);
     }
     [ServiceContract(CallbackContract = typeof(INotificationServiceCallBack))]
     public interface ITagProcessing
     {
         [OperationContract]
-        void DoWork();
-        [OperationContract]
-        string PrikazVrednostiUlaznihTagova();
+        void DoWork(AI aI,DI dI);
+        
         [OperationContract]
         void TagProccesingInitalization();
 
@@ -30,6 +29,8 @@ namespace SCADA
     public interface IDatabseManager
     {
         [OperationContract]
-        void SendNotification(object tag, int brojTaga);
+        void SendNotification(string message);
+        [OperationContract]
+        string davanjeVrednosti(string IO,string tag_name);
     }
 }

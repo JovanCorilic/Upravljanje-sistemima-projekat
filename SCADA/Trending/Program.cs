@@ -5,11 +5,18 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Trending
 {
     class Program
     {
-        public class ServiceCallBack:ServiceReference.INotificationServiceCallBack
+        public class ServiceCallBack : ServiceReference.ITagProcessingCallback
+        {
+            public void OnNotificationSent(string message)
+            {
+                Console.WriteLine(message+"\n");
+            }
+        }
         static void Main(string[] args)
         {
             InstanceContext ic = new InstanceContext(new ServiceCallBack());

@@ -15,6 +15,7 @@ namespace DatabaseManager
             
             string token = "";
             ServiceReference.UserProcessingClient proxy = new ServiceReference.UserProcessingClient();
+            ServiceReference1.DatabseManagerClient proxyClient = new ServiceReference1.DatabseManagerClient();
             bool ulogovan = false;
             while (true)
             {
@@ -59,7 +60,7 @@ namespace DatabaseManager
                     }
                     else if (broj1 == 2)
                     {
-                        PravljenjeTagova(proxy, token);
+                        PravljenjeTagova(proxy, token, proxyClient);
                     }
                     else if (broj1 == 3)
                     {
@@ -90,7 +91,7 @@ namespace DatabaseManager
             }
         }
 
-        static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy,string token)
+        static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy,string token, ServiceReference1.DatabseManagerClient proxyClent)
         {
             while (true)
             {
@@ -130,7 +131,11 @@ namespace DatabaseManager
                     Console.WriteLine("Unesite units:");
                     ai.units = Console.ReadLine();
                     if (proxy.pravljenjeTaga(ai, broj1, token))
+                    {
                         Console.WriteLine("Uspesno napravljen AI tag.");
+                        string vrednost = proxyClent.davanjeVrednosti(ai.IO_address,ai.tag_name);
+                        proxyClent.SendNotification("Analog input naziv "+ai.tag_name+" vrednost: "+vrednost);
+                    }
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }
@@ -181,7 +186,11 @@ namespace DatabaseManager
                         di.onoff_scan = false;
                     }
                     if (proxy.pravljenjeTaga(di, broj1, token))
+                    {
+                        string vrednost = proxyClent.davanjeVrednosti(di.IO_address,di.tag_name);
+                        proxyClent.SendNotification("Digital input naziv " + di.tag_name + " vrednost: " + vrednost);
                         Console.WriteLine("Uspesno napravljen DI tag.");
+                    }
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }

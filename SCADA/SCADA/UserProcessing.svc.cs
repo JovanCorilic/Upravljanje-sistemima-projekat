@@ -178,6 +178,8 @@ namespace SCADA
                         tagName = aI.tag_name;
                         IO = aI.IO_address;
                         aIs.Add(aI.tag_name, aI);
+                        sacuvajXML();
+                        return true;
                     }
                     else
                         return false;
@@ -202,6 +204,8 @@ namespace SCADA
                         tagName = dI.tag_name;
                         IO = dI.IO_address;
                         dIs.Add(dI.tag_name, dI);
+                        sacuvajXML();
+                        return true;
                     }
                     else
                         return false;
