@@ -164,7 +164,7 @@ namespace SCADA
                 return false;
         }
 
-        public bool pravljenjeTaga(object temp, int brojTag, string token)
+        public bool pravljenjeTaga(AI ait,object temp, int brojTag, string token)
         {
             if (IsUserAuthenticated(token))
             {
@@ -172,7 +172,9 @@ namespace SCADA
                 string IO = "";
                 if (brojTag == 1)
                 {
-                    AI aI = (AI)temp;
+                    
+
+                    AI aI = ait;
                     if (!aIs.ContainsKey(aI.tag_name))
                     {
                         tagName = aI.tag_name;
@@ -250,7 +252,7 @@ namespace SCADA
 
         private void sacuvajXML()
         {
-            XElement xElement = new XElement("SCADA konfiguracija");
+            XElement xElement = new XElement("SCADA_konfiguracija");
             
             XElement ai = new XElement("AI");
             foreach(AI i in aIs.Values)

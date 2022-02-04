@@ -58,6 +58,7 @@
   <xs:element name="pravljenjeTaga">
     <xs:complexType>
       <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aI" nillable="true" type="q1:AI" />
         <xs:element minOccurs="0" name="temp" nillable="true" type="xs:anyType" />
         <xs:element minOccurs="0" name="brojTag" type="xs:int" />
         <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
@@ -133,10 +134,10 @@
   <xs:element name="prenosTipa">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aI" nillable="true" type="q1:AI" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aO" nillable="true" type="q2:AO" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dI" nillable="true" type="q3:DI" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dO" nillable="true" type="q4:DO" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aI" nillable="true" type="q2:AI" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aO" nillable="true" type="q3:AO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dI" nillable="true" type="q4:DI" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dO" nillable="true" type="q5:DO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

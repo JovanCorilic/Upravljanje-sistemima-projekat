@@ -16,6 +16,8 @@ namespace DatabaseManager
             string token = "";
             ServiceReference.UserProcessingClient proxy = new ServiceReference.UserProcessingClient();
             ServiceReference1.DatabseManagerClient proxyClient = new ServiceReference1.DatabseManagerClient();
+            XElement xElement = new XElement("SCADA_konfiguracija");
+            xElement.Save("scadaConfig.xml");
             bool ulogovan = false;
             while (true)
             {
@@ -130,7 +132,8 @@ namespace DatabaseManager
                     ai.high_limit = Console.ReadLine();
                     Console.WriteLine("Unesite units:");
                     ai.units = Console.ReadLine();
-                    if (proxy.pravljenjeTaga(ai, broj1, token))
+                    object temp = ai;
+                    if (proxy.pravljenjeTaga(ai,null, broj1, token))
                     {
                         Console.WriteLine("Uspesno napravljen AI tag.");
                         string vrednost = proxyClent.davanjeVrednosti(ai.IO_address,ai.tag_name);
@@ -157,7 +160,7 @@ namespace DatabaseManager
                     ao.high_limit = Console.ReadLine();
                     Console.WriteLine("Unesite units:");
                     ao.units = Console.ReadLine();
-                    if(proxy.pravljenjeTaga(ao, broj1, token))
+                    if(proxy.pravljenjeTaga(null,null, broj1, token))
                             Console.WriteLine("Uspesno napravljen AO tag.");
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
@@ -185,7 +188,7 @@ namespace DatabaseManager
                     {
                         di.onoff_scan = false;
                     }
-                    if (proxy.pravljenjeTaga(di, broj1, token))
+                    if (proxy.pravljenjeTaga(null,null, broj1, token))
                     {
                         string vrednost = proxyClent.davanjeVrednosti(di.IO_address,di.tag_name);
                         proxyClent.SendNotification("Digital input naziv " + di.tag_name + " vrednost: " + vrednost);
@@ -204,7 +207,7 @@ namespace DatabaseManager
                     
                     Console.WriteLine("Unesite I/O addresu:");
                     dO.IO_address = Console.ReadLine();
-                    if (proxy.pravljenjeTaga(dO, broj1, token))
+                    if (proxy.pravljenjeTaga(null,null, broj1, token))
                         Console.WriteLine("Uspesno napravljen DO tag.");
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");

@@ -594,10 +594,10 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DI))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DO))]
-        bool pravljenjeTaga(object temp, int brojTag, string token);
+        bool pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/pravljenjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse")]
-        System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(object temp, int brojTag, string token);
+        System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeTagaResponse")]
         bool brisanjeTaga(string id, string token);
@@ -689,12 +689,12 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.prikazVrednostiIzlaznihTagovaAsync(token);
         }
         
-        public bool pravljenjeTaga(object temp, int brojTag, string token) {
-            return base.Channel.pravljenjeTaga(temp, brojTag, token);
+        public bool pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token) {
+            return base.Channel.pravljenjeTaga(aI, temp, brojTag, token);
         }
         
-        public System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(object temp, int brojTag, string token) {
-            return base.Channel.pravljenjeTagaAsync(temp, brojTag, token);
+        public System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token) {
+            return base.Channel.pravljenjeTagaAsync(aI, temp, brojTag, token);
         }
         
         public bool brisanjeTaga(string id, string token) {
