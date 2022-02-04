@@ -216,6 +216,10 @@ namespace SCADA
         {
             if (File.Exists("scadaConfig.xml"))
             {
+                aIs = new Dictionary<string, AI>();
+                aOs = new Dictionary<string, AO>();
+                dIs = new Dictionary<string, DI>();
+                dOs = new Dictionary<string, DO>();
                 XElement xmlData = XElement.Load("scadaConfig.xml");
                 XElement lista = (XElement)xmlData.FirstNode;
                 XElement listaAI = (XElement)lista.FirstNode;
@@ -325,6 +329,7 @@ namespace SCADA
                     {
                         string token = GenerateToken(username);
                         authenticatedUsers.Add(token, user);
+                        ucitavanjeXML();
                         return token;
                     }
                 }
@@ -345,6 +350,7 @@ namespace SCADA
 
         public bool Logout(string token)
         {
+            sacuvajXML();
             return authenticatedUsers.Remove(token);
         }
 
