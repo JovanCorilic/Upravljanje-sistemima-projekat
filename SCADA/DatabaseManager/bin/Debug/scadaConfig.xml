@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SCADA_konfiguracija xmlns="">
   <AI>
-    <tag_name description="wfgwehwergherwer" driver="eee ewrfwf wdfw" IO_address="C" scan_time="12" alarms="" onoff_scan="true" low_limit="12" high_limit="23" units="wfwf">test</tag_name>
+    <tag_name description="ehertrfee egege" driver="fw3fwf" IO_address="C" scan_time="1" alarms="" onoff_scan="true" low_limit="12" high_limit="23" units="wfgwf">test</tag_name>
   </AI>
   <AO />
-  <DI />
+  <DI>
+    <tag_name description="wfwefgwe" driver="wdwd" IO_address="C" scan_time="12" onoff_scan="true">3</tag_name>
+  </DI>
   <DO />
 </SCADA_konfiguracija>

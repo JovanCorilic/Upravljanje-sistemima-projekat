@@ -317,7 +317,7 @@ namespace SCADA
                 XElement xmlData = XElement.Load("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/scadaConfig.xml");
                 XElement lista = (XElement)xmlData.FirstNode;
                 XElement listaAI = (XElement)lista.FirstNode;
-                do
+                while (listaAI != null) 
                 {
                     AI aI = new AI();
                     var attribute = listaAI.FirstAttribute;
@@ -341,11 +341,11 @@ namespace SCADA
                     aI.tag_name = listaAI.FirstNode.ToString();
                     aIs.Add(aI.tag_name, aI);
                     listaAI = (XElement)listaAI.NextNode;
-                } while (listaAI!=null);
+                } 
 
                 lista = (XElement)lista.NextNode;
                 XElement listaAO = (XElement)lista.FirstNode;
-                do
+                while (listaAO != null)
                 {
                     AO ao = new AO();
                     var attribute = listaAO.FirstAttribute;
@@ -369,10 +369,10 @@ namespace SCADA
                     ao.tag_name = listaAO.FirstNode.ToString();
                     aOs.Add(ao.tag_name, ao);
                     listaAO = (XElement)listaAO.NextNode;
-                } while (listaAO!=null);
+                } 
                 lista = (XElement)lista.NextNode;
                 XElement listaDI = (XElement)lista.FirstNode;
-                do
+                while (listaDI != null) 
                 {
                     DI di = new DI();
                     var attribute = listaDI.FirstAttribute;
@@ -390,10 +390,10 @@ namespace SCADA
                     di.tag_name = listaDI.FirstNode.ToString();
                     dIs.Add(di.tag_name, di);
                     listaDI = (XElement)listaDI.NextNode;
-                } while (listaDI!=null);
+                } 
                 lista = (XElement)lista.NextNode;
                 XElement listaDO = (XElement)lista.FirstNode;
-                do
+                while (listaDO != null) 
                 {
                     DO ao = new DO();
                     var attribute = listaDO.FirstAttribute;
@@ -406,7 +406,7 @@ namespace SCADA
                     ao.tag_name = listaDO.FirstNode.ToString();
                     dOs.Add(ao.tag_name, ao);
                     listaDO = (XElement)listaDO.NextNode;
-                } while (listaDO!=null);
+                } 
             }
         }
 

@@ -50,8 +50,8 @@ namespace DatabaseManager
                         ulogovan = true;
                 }
                 while (ulogovan) {
-                    Console.WriteLine("Unesite opciju ( 0 za izlaz)\n1.Logout\n2.Pravljenje taga\n3.Brisanje taga\n4.Prikaz vrednosti izlaznih tagova\n" +
-                        "5.Isklucivanje scan kod ulaznog taga\n6.Promena vrednosti izlaznog taga");
+                    Console.WriteLine("Unesite opciju\n1.Logout\n2.Pravljenje taga\n3.Brisanje taga\n4.Prikaz vrednosti izlaznih tagova\n" +
+                        "5.Isklucivanje/Ukljucivanje scan kod ulaznog taga\n6.Promena vrednosti izlaznog taga");
                     int broj1 = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
                     Console.WriteLine();
                     if (broj1 == 1)
