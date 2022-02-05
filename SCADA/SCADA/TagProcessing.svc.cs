@@ -57,7 +57,8 @@ namespace SCADA
                 }
                 catch (Exception e)
                 {
-                    return "Error";
+                    var temp = db.tagVrednosts.Find(tag_name);
+                    return temp.vrednost.ToString();
                 }
             }
             
