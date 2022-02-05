@@ -1,0 +1,7 @@
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.csproj.AssemblyReference.cache
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.csproj.CoreCompileInputs.cache
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\TestiranjeNotifikacije.dll.config
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\TestiranjeNotifikacije.dll
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\TestiranjeNotifikacije.pdb
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.dll
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.pdb

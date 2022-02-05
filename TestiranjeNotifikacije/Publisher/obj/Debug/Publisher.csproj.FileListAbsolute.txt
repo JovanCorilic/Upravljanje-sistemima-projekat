@@ -1,0 +1,7 @@
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Publisher\bin\Debug\Publisher.exe.config
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Publisher\bin\Debug\Publisher.exe
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Publisher\bin\Debug\Publisher.pdb
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Publisher\obj\Debug\Publisher.csproj.AssemblyReference.cache
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Publisher\obj\Debug\Publisher.csproj.CoreCompileInputs.cache
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Publisher\obj\Debug\Publisher.exe
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Publisher\obj\Debug\Publisher.pdb

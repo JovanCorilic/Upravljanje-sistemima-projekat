@@ -1,0 +1,6 @@
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Subscriber\bin\Debug\Subscriber.exe.config
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Subscriber\bin\Debug\Subscriber.exe
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Subscriber\bin\Debug\Subscriber.pdb
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Subscriber\obj\Debug\Subscriber.csproj.CoreCompileInputs.cache
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Subscriber\obj\Debug\Subscriber.exe
+C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\Subscriber\obj\Debug\Subscriber.pdb
