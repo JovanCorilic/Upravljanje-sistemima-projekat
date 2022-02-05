@@ -66,13 +66,11 @@ namespace SCADA
                     if (aIs[tag_name].onoff_scan)
                     {
                         aIs[tag_name].onoff_scan = false;
-                        sacuvajXML();
                         return "Skeniranje iskljuceno";
                     }
                     else
                     {
                         aIs[tag_name].onoff_scan = true;
-                        sacuvajXML();
                         return "Skeniranje ukljuceno";
                     }
                 }
@@ -81,13 +79,11 @@ namespace SCADA
                     if (dIs[tag_name].onoff_scan)
                     {
                         dIs[tag_name].onoff_scan = false;
-                        sacuvajXML();
                         return "Skeniranje iskljuceno";
                     }
                     else
                     {
                         dIs[tag_name].onoff_scan = true;
-                        sacuvajXML();
                         return "Skeniranje ukljuceno";
                     }
                 }
@@ -157,14 +153,14 @@ namespace SCADA
                     }
 
                 }
-                sacuvajXML();
+                
                 return true;
             }
             else
                 return false;
         }
 
-        public bool pravljenjeTaga(AI ait,object temp, int brojTag, string token)
+        public bool pravljenjeTaga(AI aIt, AO aOt, DI dIt, DO dOt, int brojTag, string token)
         {
             if (IsUserAuthenticated(token))
             {
@@ -172,9 +168,7 @@ namespace SCADA
                 string IO = "";
                 if (brojTag == 1)
                 {
-                    
-
-                    AI aI = ait;
+                    AI aI = aIt;
                     if (!aIs.ContainsKey(aI.tag_name))
                     {
                         tagName = aI.tag_name;
@@ -188,7 +182,7 @@ namespace SCADA
                 }
                 else if (brojTag == 2)
                 {
-                    AO aO = (AO)temp;
+                    AO aO = aOt;
                     if (!aOs.ContainsKey(aO.tag_name))
                     {
                         tagName = aO.tag_name;
@@ -200,7 +194,7 @@ namespace SCADA
                 }
                 else if (brojTag == 3)
                 {
-                    DI dI = (DI)temp;
+                    DI dI = dIt;
                     if (!dIs.ContainsKey(dI.tag_name))
                     {
                         tagName = dI.tag_name;
@@ -214,7 +208,7 @@ namespace SCADA
                 }
                 else if (brojTag == 4)
                 {
-                    DO dO = (DO)temp;
+                    DO dO = dOt;
                     if (!dOs.ContainsKey(dO.tag_name))
                     {
                         tagName = dO.tag_name;
@@ -242,7 +236,7 @@ namespace SCADA
                     }
                         
                 }
-                sacuvajXML();    
+                   
                 return true;
             }
             else
@@ -250,7 +244,7 @@ namespace SCADA
             
         }
 
-        private void sacuvajXML()
+        public XElement sacuvajXML()
         {
             XElement xElement = new XElement("SCADA_konfiguracija");
             
@@ -285,7 +279,7 @@ namespace SCADA
             }
             
             xElement.Add(dO);
-            xElement.Save("scadaConfig.xml");
+            return xElement;
 
         }
 
@@ -427,7 +421,7 @@ namespace SCADA
 
         public bool Logout(string token)
         {
-            sacuvajXML();
+            
             return authenticatedUsers.Remove(token);
         }
 

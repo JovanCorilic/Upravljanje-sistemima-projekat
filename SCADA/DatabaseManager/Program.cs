@@ -16,8 +16,7 @@ namespace DatabaseManager
             string token = "";
             ServiceReference.UserProcessingClient proxy = new ServiceReference.UserProcessingClient();
             ServiceReference1.DatabseManagerClient proxyClient = new ServiceReference1.DatabseManagerClient();
-            XElement xElement = new XElement("SCADA_konfiguracija");
-            xElement.Save("scadaConfig.xml");
+            
             bool ulogovan = false;
             while (true)
             {
@@ -59,6 +58,7 @@ namespace DatabaseManager
                     {
                         proxy.Logout(token);
                         ulogovan = false;
+                        proxy.sacuvajXML().Save("scadaConfig.xml");
                     }
                     else if (broj1 == 2)
                     {
@@ -69,7 +69,10 @@ namespace DatabaseManager
                         Console.WriteLine("Unesite naziv taga:");
                         string temp = Console.ReadLine();
                         if (proxy.brisanjeTaga(temp, token))
+                        {
                             Console.WriteLine("Uspesno obrisan tag!");
+                            proxy.sacuvajXML().Save("scadaConfig.xml");
+                        }
                         else
                             Console.WriteLine("Neuspesno obrisan tag");
                     }
@@ -82,6 +85,7 @@ namespace DatabaseManager
                         Console.WriteLine("Unesite naziv taga:");
                         string naziv = Console.ReadLine();
                         Console.WriteLine(proxy.ukljucivanjeIsklucivanjeScan(naziv,token));
+                        proxy.sacuvajXML().Save("scadaConfig.xml");
                     }
                     else if (broj1 == 6)
                     {
@@ -133,7 +137,7 @@ namespace DatabaseManager
                     Console.WriteLine("Unesite units:");
                     ai.units = Console.ReadLine();
                     object temp = ai;
-                    if (proxy.pravljenjeTaga(ai,null, broj1, token))
+                    if (proxy.pravljenjeTaga(ai, null, null,null, broj1, token))
                     {
                         Console.WriteLine("Uspesno napravljen AI tag.");
                         string vrednost = proxyClent.davanjeVrednosti(ai.IO_address,ai.tag_name);
@@ -160,7 +164,7 @@ namespace DatabaseManager
                     ao.high_limit = Console.ReadLine();
                     Console.WriteLine("Unesite units:");
                     ao.units = Console.ReadLine();
-                    if(proxy.pravljenjeTaga(null,null, broj1, token))
+                    if(proxy.pravljenjeTaga(null,ao,null,null, broj1, token))
                             Console.WriteLine("Uspesno napravljen AO tag.");
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
@@ -188,7 +192,7 @@ namespace DatabaseManager
                     {
                         di.onoff_scan = false;
                     }
-                    if (proxy.pravljenjeTaga(null,null, broj1, token))
+                    if (proxy.pravljenjeTaga(null,null,di,null, broj1, token))
                     {
                         string vrednost = proxyClent.davanjeVrednosti(di.IO_address,di.tag_name);
                         proxyClent.SendNotification("Digital input naziv " + di.tag_name + " vrednost: " + vrednost);
@@ -207,11 +211,12 @@ namespace DatabaseManager
                     
                     Console.WriteLine("Unesite I/O addresu:");
                     dO.IO_address = Console.ReadLine();
-                    if (proxy.pravljenjeTaga(null,null, broj1, token))
+                    if (proxy.pravljenjeTaga(null,null,null,dO, broj1, token))
                         Console.WriteLine("Uspesno napravljen DO tag.");
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }
+                proxy.sacuvajXML().Save("scadaConfig.xml");
             }
         }
     }

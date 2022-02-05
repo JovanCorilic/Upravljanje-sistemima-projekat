@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Xml.Linq;
 
 namespace SCADA
 {
@@ -14,13 +15,15 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        XElement sacuvajXML();
+        [OperationContract]
         string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token);
         [OperationContract]
         string ukljucivanjeIsklucivanjeScan(string tag_name, string token);
         [OperationContract]
         string prikazVrednostiIzlaznihTagova(string token);
         [OperationContract]
-        bool pravljenjeTaga(AI aI,object temp, int brojTag,string token);
+        bool pravljenjeTaga(AI aI,AO aO, DI dI,DO dO, int brojTag,string token);
         [OperationContract]
         bool brisanjeTaga(string id, string token);
         [OperationContract]

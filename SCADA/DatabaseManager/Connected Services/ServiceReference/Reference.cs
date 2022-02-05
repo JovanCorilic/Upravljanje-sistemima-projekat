@@ -571,6 +571,12 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajXML", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajXMLResponse")]
+        System.Xml.Linq.XElement sacuvajXML();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajXML", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajXMLResponse")]
+        System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajXMLAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTaga", ReplyAction="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTagaResponse")]
         string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token);
         
@@ -590,14 +596,10 @@ namespace DatabaseManager.ServiceReference {
         System.Threading.Tasks.Task<string> prikazVrednostiIzlaznihTagovaAsync(string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/pravljenjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AI))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.AO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DI))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DatabaseManager.ServiceReference.DO))]
-        bool pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token);
+        bool pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO, int brojTag, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/pravljenjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/pravljenjeTagaResponse")]
-        System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token);
+        System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO, int brojTag, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeTaga", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeTagaResponse")]
         bool brisanjeTaga(string id, string token);
@@ -665,6 +667,14 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.DoWorkAsync();
         }
         
+        public System.Xml.Linq.XElement sacuvajXML() {
+            return base.Channel.sacuvajXML();
+        }
+        
+        public System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajXMLAsync() {
+            return base.Channel.sacuvajXMLAsync();
+        }
+        
         public string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token) {
             return base.Channel.upisivanjeVrednostiIzlaznogTaga(tag_name, token);
         }
@@ -689,12 +699,12 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.prikazVrednostiIzlaznihTagovaAsync(token);
         }
         
-        public bool pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token) {
-            return base.Channel.pravljenjeTaga(aI, temp, brojTag, token);
+        public bool pravljenjeTaga(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO, int brojTag, string token) {
+            return base.Channel.pravljenjeTaga(aI, aO, dI, dO, brojTag, token);
         }
         
-        public System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, object temp, int brojTag, string token) {
-            return base.Channel.pravljenjeTagaAsync(aI, temp, brojTag, token);
+        public System.Threading.Tasks.Task<bool> pravljenjeTagaAsync(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO, int brojTag, string token) {
+            return base.Channel.pravljenjeTagaAsync(aI, aO, dI, dO, brojTag, token);
         }
         
         public bool brisanjeTaga(string id, string token) {
