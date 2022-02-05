@@ -13,6 +13,12 @@
   <wsdl:message name="IUserProcessing_DoWork_OutputMessage">
     <wsdl:part name="parameters" element="tns:DoWorkResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserProcessing_dajIOAdresu_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajIOAdresu" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_dajIOAdresu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajIOAdresuResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserProcessing_sacuvajXML_InputMessage">
     <wsdl:part name="parameters" element="tns:sacuvajXML" />
   </wsdl:message>
@@ -72,6 +78,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/DoWork" message="tns:IUserProcessing_DoWork_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/DoWorkResponse" message="tns:IUserProcessing_DoWork_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="dajIOAdresu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/dajIOAdresu" message="tns:IUserProcessing_dajIOAdresu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/dajIOAdresuResponse" message="tns:IUserProcessing_dajIOAdresu_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="sacuvajXML">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/sacuvajXML" message="tns:IUserProcessing_sacuvajXML_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/sacuvajXMLResponse" message="tns:IUserProcessing_sacuvajXML_OutputMessage" />
@@ -113,6 +123,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
       <soap:operation soapAction="http://tempuri.org/IUserProcessing/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajIOAdresu">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/dajIOAdresu" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

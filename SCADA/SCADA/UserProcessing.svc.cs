@@ -27,6 +27,28 @@ namespace SCADA
 
 
         }
+
+        public string dajIOAdresu(string tag_name, string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                if (aIs.ContainsKey(tag_name))
+                {
+                    if (aIs[tag_name].onoff_scan)
+                        return aIs[tag_name].IO_address;
+                }
+                else if (dIs.ContainsKey(tag_name))
+                {
+                    if (dIs[tag_name].onoff_scan)
+
+                        return dIs[tag_name].IO_address;
+                }
+                else
+                    return "";
+            }
+            return "";
+        }
+
         public string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token){
             if (IsUserAuthenticated(token))
             {
@@ -285,13 +307,14 @@ namespace SCADA
 
         private void ucitavanjeXML()
         {
-            if (File.Exists("scadaConfig.xml"))
+
+            if (File.Exists("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/scadaConfig.xml"))
             {
                 aIs = new Dictionary<string, AI>();
                 aOs = new Dictionary<string, AO>();
                 dIs = new Dictionary<string, DI>();
                 dOs = new Dictionary<string, DO>();
-                XElement xmlData = XElement.Load("scadaConfig.xml");
+                XElement xmlData = XElement.Load("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/scadaConfig.xml");
                 XElement lista = (XElement)xmlData.FirstNode;
                 XElement listaAI = (XElement)lista.FirstNode;
                 do

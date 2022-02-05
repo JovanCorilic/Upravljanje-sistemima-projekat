@@ -85,6 +85,13 @@ namespace DatabaseManager
                         Console.WriteLine("Unesite naziv taga:");
                         string naziv = Console.ReadLine();
                         Console.WriteLine(proxy.ukljucivanjeIsklucivanjeScan(naziv,token));
+                        string IO = proxy.dajIOAdresu(naziv, token);
+                        if (!String.Equals(IO,""))
+                        {
+                            string vrednost = proxyClient.davanjeVrednosti(IO, naziv);
+                            proxyClient.SendNotification("Naziv taga " + naziv + " vrednost: " + vrednost);
+                        }
+
                         proxy.sacuvajXML().Save("scadaConfig.xml");
                     }
                     else if (broj1 == 6)
@@ -141,7 +148,8 @@ namespace DatabaseManager
                     {
                         Console.WriteLine("Uspesno napravljen AI tag.");
                         string vrednost = proxyClent.davanjeVrednosti(ai.IO_address,ai.tag_name);
-                        proxyClent.SendNotification("Analog input naziv "+ai.tag_name+" vrednost: "+vrednost);
+                        if(ai.onoff_scan)
+                            proxyClent.SendNotification("Analog input naziv "+ai.tag_name+" vrednost: "+vrednost);
                     }
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
@@ -195,7 +203,8 @@ namespace DatabaseManager
                     if (proxy.pravljenjeTaga(null,null,di,null, broj1, token))
                     {
                         string vrednost = proxyClent.davanjeVrednosti(di.IO_address,di.tag_name);
-                        proxyClent.SendNotification("Digital input naziv " + di.tag_name + " vrednost: " + vrednost);
+                        if(di.onoff_scan)
+                            proxyClent.SendNotification("Digital input naziv " + di.tag_name + " vrednost: " + vrednost);
                         Console.WriteLine("Uspesno napravljen DI tag.");
                     }
                     else

@@ -571,6 +571,12 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/dajIOAdresu", ReplyAction="http://tempuri.org/IUserProcessing/dajIOAdresuResponse")]
+        string dajIOAdresu(string tag_name, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/dajIOAdresu", ReplyAction="http://tempuri.org/IUserProcessing/dajIOAdresuResponse")]
+        System.Threading.Tasks.Task<string> dajIOAdresuAsync(string tag_name, string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajXML", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajXMLResponse")]
         System.Xml.Linq.XElement sacuvajXML();
         
@@ -659,6 +665,14 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task DoWorkAsync() {
             return base.Channel.DoWorkAsync();
+        }
+        
+        public string dajIOAdresu(string tag_name, string token) {
+            return base.Channel.dajIOAdresu(tag_name, token);
+        }
+        
+        public System.Threading.Tasks.Task<string> dajIOAdresuAsync(string tag_name, string token) {
+            return base.Channel.dajIOAdresuAsync(tag_name, token);
         }
         
         public System.Xml.Linq.XElement sacuvajXML() {

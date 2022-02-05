@@ -15,6 +15,8 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        string dajIOAdresu(string tag_name, string token);
+        [OperationContract]
         XElement sacuvajXML();
         [OperationContract]
         string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token);
