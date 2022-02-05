@@ -6,6 +6,7 @@
   <AO />
   <DI>
     <tag_name description="wfwefgwe" driver="wdwd" IO_address="C" scan_time="12" onoff_scan="true">3</tag_name>
+    <tag_name description="fgwfw" driver="wfwf" IO_address="C" scan_time="12" onoff_scan="true">q</tag_name>
   </DI>
   <DO />
 </SCADA_konfiguracija>

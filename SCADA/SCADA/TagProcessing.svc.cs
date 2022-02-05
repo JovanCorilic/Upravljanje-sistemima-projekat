@@ -17,7 +17,7 @@ namespace SCADA
         static INotificationServiceCallBack proxy = null;
         delegate void NotificationDelegate(string message);
         static event NotificationDelegate notificationSent = null;
-        event NotificationDelegate notificationReceived;
+        //event NotificationDelegate notificationReceived;
 
         public void DoWork(AI aI, DI dI)
         {
@@ -29,13 +29,15 @@ namespace SCADA
         public void TagProccesingInitalization()
         {
             proxy = OperationContext.Current.GetCallbackChannel<INotificationServiceCallBack>();
-            notificationReceived += proxy.OnNotificationSent;
+            notificationSent += proxy.OnNotificationSent;
         }
 
         
         public void SendNotification(string message)
         {
-            notificationReceived?.Invoke(message);
+            if (notificationSent != null)
+                notificationSent(message);
+
         }
 
         public string davanjeVrednosti(string IO, string tag_name)
