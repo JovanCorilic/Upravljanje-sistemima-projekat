@@ -11,6 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trending", "Trending\Trendi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alarm-display", "Alarm-display\Alarm-display.csproj", "{95806798-EACD-4D1B-9E39-5AF481368F03}"
+	ProjectSection(ProjectDependencies) = postProject
+		{516837FE-15A1-448D-BBF6-F6639976FDD3} = {516837FE-15A1-448D-BBF6-F6639976FDD3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportManager", "ReportManager\ReportManager.csproj", "{4B63F47C-8E6E-47DD-8101-4EE3E73B6D7E}"
 EndProject

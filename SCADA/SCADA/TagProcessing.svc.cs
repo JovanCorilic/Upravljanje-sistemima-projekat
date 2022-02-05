@@ -49,6 +49,7 @@ namespace SCADA
                     TagVrednost tagVrednost = new TagVrednost();
                     tagVrednost.tag_name = tag_name;
                     tagVrednost.vrednost = Simulation_Driver.SimulationDriver.ReturnValue(IO);
+                    tagVrednost.vreme_kreacije = DateTime.Now;
                     db.tagVrednosts.Add(tagVrednost);
                     db.SaveChanges();
                     return tagVrednost.vrednost.ToString();
@@ -57,8 +58,7 @@ namespace SCADA
                 }
                 catch (Exception e)
                 {
-                    var temp = db.tagVrednosts.Find(tag_name);
-                    return temp.vrednost.ToString();
+                    return "Error";
                 }
             }
             

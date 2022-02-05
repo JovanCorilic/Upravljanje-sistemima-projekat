@@ -63,7 +63,11 @@ namespace SCADA
                 {
                     try
                     {
-                        db.tagVrednosts.Find(tag_name).vrednost = SimulationDriver.ReturnValue(IO);
+                        TagVrednost tagVrednost = new TagVrednost();
+                        tagVrednost.tag_name = tag_name;
+                        tagVrednost.vrednost = SimulationDriver.ReturnValue(IO);
+                        tagVrednost.vreme_kreacije = DateTime.Now;
+                        db.tagVrednosts.Add(tagVrednost);
                         db.SaveChanges();
                         
                         return "Uspesno promenjena vrednost";
@@ -166,7 +170,12 @@ namespace SCADA
                 {
                     try
                     {
-                        db.tagVrednosts.Remove(db.tagVrednosts.Find(id));
+                        foreach(TagVrednost tagVrednost in db.tagVrednosts)
+                        {
+                            if(String.Equals(tagVrednost.tag_name,id))
+                                db.tagVrednosts.Remove(tagVrednost);
+                        }
+                        
                         db.SaveChanges();
                     }
                     catch (Exception e)
@@ -247,6 +256,7 @@ namespace SCADA
                         TagVrednost tagVrednost = new TagVrednost();
                         tagVrednost.tag_name = tagName;
                         tagVrednost.vrednost = SimulationDriver.ReturnValue(IO);
+                        tagVrednost.vreme_kreacije = DateTime.Now;
                         if (aOs.ContainsKey(tagVrednost.tag_name))
                             aOs[tagVrednost.tag_name].inital_value = tagVrednost.vrednost.ToString();
                         else if (dOs.ContainsKey(tagVrednost.tag_name))

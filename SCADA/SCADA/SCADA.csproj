@@ -71,15 +71,23 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AlarmDisplay.svc" />
     <Content Include="TagProcessing.svc" />
     <Content Include="UserProcessing.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI.cs" />
+    <Compile Include="Alarm.cs" />
+    <Compile Include="AlarmDisplay.svc.cs">
+      <DependentUpon>AlarmDisplay.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AlarmInformacija.cs" />
+    <Compile Include="AlarmsContext.cs" />
     <Compile Include="AO.cs" />
     <Compile Include="DI.cs" />
     <Compile Include="DO.cs" />
+    <Compile Include="IAlarmDisplay.cs" />
     <Compile Include="ITagProcessing.cs" />
     <Compile Include="IUserProcessing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,11 +7,24 @@ using System.Text;
 
 namespace SCADA
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IAlarmDisplay" in both code and config file together.
-    [ServiceContract]
+    public interface INotificationAlarmCallBack
+    {
+        [OperationContract(IsOneWay = true)]
+        void OnNotificationSent(string message);
+    }
+    [ServiceContract(CallbackContract = typeof(INotificationAlarmCallBack))]
     public interface IAlarmDisplay
     {
         [OperationContract]
         void DoWork();
+        [OperationContract]
+        void AlarmDisplayInitialization();
+    }
+    [ServiceContract]
+    public interface IDatabaseManagerAlarm
+    {
+        [OperationContract]
+        void SendNotification(string message);
+
     }
 }
