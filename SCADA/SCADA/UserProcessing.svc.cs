@@ -485,9 +485,6 @@ namespace SCADA
             return authenticatedUsers.ContainsKey(token);
         }
 
-        public void prenosTipa(AI aI, AO aO, DI dI, DO dO)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

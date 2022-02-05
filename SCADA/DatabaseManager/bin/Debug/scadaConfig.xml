@@ -1,2 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SCADA_konfiguracija />
+<SCADA_konfiguracija xmlns="">
+  <AI>
+    <tag_name description="wfgwehwergherwer" driver="eee ewrfwf wdfw" IO_address="C" scan_time="12" alarms="" onoff_scan="true" low_limit="12" high_limit="23" units="wfwf">test</tag_name>
+  </AI>
+  <AO />
+  <DI />
+  <DO />
+</SCADA_konfiguracija>

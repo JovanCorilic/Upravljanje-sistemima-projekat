@@ -624,12 +624,6 @@ namespace DatabaseManager.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/Logout", ReplyAction="http://tempuri.org/IUserProcessing/LogoutResponse")]
         System.Threading.Tasks.Task<bool> LogoutAsync(string token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/prenosTipa", ReplyAction="http://tempuri.org/IUserProcessing/prenosTipaResponse")]
-        void prenosTipa(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/prenosTipa", ReplyAction="http://tempuri.org/IUserProcessing/prenosTipaResponse")]
-        System.Threading.Tasks.Task prenosTipaAsync(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -737,14 +731,6 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> LogoutAsync(string token) {
             return base.Channel.LogoutAsync(token);
-        }
-        
-        public void prenosTipa(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO) {
-            base.Channel.prenosTipa(aI, aO, dI, dO);
-        }
-        
-        public System.Threading.Tasks.Task prenosTipaAsync(DatabaseManager.ServiceReference.AI aI, DatabaseManager.ServiceReference.AO aO, DatabaseManager.ServiceReference.DI dI, DatabaseManager.ServiceReference.DO dO) {
-            return base.Channel.prenosTipaAsync(aI, aO, dI, dO);
         }
     }
 }

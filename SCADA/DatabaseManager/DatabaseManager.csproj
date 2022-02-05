@@ -80,6 +80,7 @@
     <None Include="Connected Services\ServiceReference\UserProcessing2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\System.Xml.Linq.XElement.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

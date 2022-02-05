@@ -14,7 +14,7 @@ namespace Trending
         {
             public void OnNotificationSent(string message)
             {
-                Console.WriteLine(message+"\n");
+                Console.WriteLine(message);
             }
         }
         static void Main(string[] args)

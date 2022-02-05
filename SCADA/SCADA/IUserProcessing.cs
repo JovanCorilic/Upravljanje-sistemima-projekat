@@ -32,8 +32,7 @@ namespace SCADA
         string Login(string username, string password);
         [OperationContract]
         bool Logout(string token);
-        [OperationContract]
-        void prenosTipa(AI aI, AO aO, DI dI, DO dO);
+        
     }
 
     
