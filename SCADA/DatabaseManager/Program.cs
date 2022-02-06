@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,13 +91,29 @@ namespace DatabaseManager
                         {
                             var vrednost = proxyClient.davanjeVrednosti(IO, naziv);
                             proxyClient.SendNotification(vrednost.ToString());
+                            ServiceReference2.Alarm temp1 = new ServiceReference2.Alarm();
+                            
+                            ServiceReference2.TagVrednost tagVrednost = new ServiceReference2.TagVrednost();
+                            tagVrednost.Id = vrednost.Id;
+                            tagVrednost.tag_name = vrednost.tag_name;
+                            tagVrednost.vrednost = vrednost.vrednost;
+                            tagVrednost.vreme_kreacije = vrednost.vreme_kreacije;
                             if (proxy.daLiJeAnalogni(vrednost.tag_name,token))
                             {
                                 var lista = proxy.DajAlarmeOdredjenogTaga(vrednost.tag_name,token);
                                 foreach(var temp in lista)
                                 {
-                                    ServiceReference2.Alarm temp1 = new ServiceReference2.Alarm(temp.tip,temp.prioritet,temp.granicna_vrednost,temp.ime_velicine);
-                                    var alarmInformacija = proxyAlarm.pravljenjeAlarmInformacije(temp, vrednost);
+                                    temp1.tip = temp.tip;
+                                    temp1.prioritet = temp.prioritet;
+                                    temp1.granicna_vrednost = temp.granicna_vrednost;
+                                    temp1.ime_velicine = temp.ime_velicine;
+                                    var alarmInformacija = proxyAlarm.pravljenjeAlarmInformacije(temp1, tagVrednost);
+                                    using (StreamWriter sw = File.AppendText("alarmsLog.txt"))
+                                    {
+                                        sw.WriteLine(alarmInformacija.ToString());
+                                    }
+                                    for(int i = 0;i<int.Parse(temp.prioritet);i++)
+                                        proxyAlarm.SendNotification(alarmInformacija.ToString());
 
                                 }
                             }

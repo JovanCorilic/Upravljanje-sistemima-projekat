@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="693c7da4-8839-4210-a59c-bf1dcd0ac2c2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cff01c07-74fa-4a95-975e-338d3053dd62" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:59065/TagProcessing.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TagProcessing.wsdl" MetadataType="Wsdl" ID="1232473f-c85c-4214-a5a4-b52708000c66" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?wsdl" />
-    <MetadataFile FileName="TagProcessing.xsd" MetadataType="Schema" ID="a3f0438e-0677-4ccf-bf28-cd8dadd83a22" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?xsd=xsd0" />
-    <MetadataFile FileName="TagProcessing1.xsd" MetadataType="Schema" ID="54c8fe84-1609-4024-810d-318275aa811f" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?xsd=xsd1" />
-    <MetadataFile FileName="TagProcessing.disco" MetadataType="Disco" ID="6cfd7c2a-6bb0-420a-a783-cd662765dcdd" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?disco" />
-    <MetadataFile FileName="TagProcessing2.xsd" MetadataType="Schema" ID="5f22e71b-4e07-4cbd-8c93-23a9ea1b1e18" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?xsd=xsd2" />
+    <MetadataFile FileName="TagProcessing.wsdl" MetadataType="Wsdl" ID="88414d0a-f830-4219-b51d-fc9d917dc67c" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?wsdl" />
+    <MetadataFile FileName="TagProcessing.xsd" MetadataType="Schema" ID="46700e56-231f-4996-97c2-2379800a1691" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?xsd=xsd0" />
+    <MetadataFile FileName="TagProcessing1.xsd" MetadataType="Schema" ID="87ad218f-6af9-41aa-948b-ba8614f5c331" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?xsd=xsd1" />
+    <MetadataFile FileName="TagProcessing.disco" MetadataType="Disco" ID="bcae3e3a-e93e-42f5-a46f-8fb0102200d8" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?disco" />
+    <MetadataFile FileName="TagProcessing2.xsd" MetadataType="Schema" ID="86ae2f99-5b33-4a60-9cf0-b28e5138b31d" SourceId="1" SourceUrl="http://localhost:59065/TagProcessing.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
