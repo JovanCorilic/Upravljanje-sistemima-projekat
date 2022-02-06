@@ -96,15 +96,16 @@ namespace SCADA
         {
             List<Alarm> alarmi = new List<Alarm>();
             int i = -1;
-            foreach(Alarm alarm in alarms)
-            {
-                if (String.Equals(alarm.ime_velicine, tag_name))
+            if (IsUserAuthenticated(token))
+                foreach (Alarm alarm in alarms)
                 {
-                    i++;
-                    alarm.ime_velicine = i.ToString();
-                    alarmi.Add(alarm);
+                    if (String.Equals(alarm.ime_velicine, tag_name))
+                    {
+                        i++;
+                        alarm.ime_velicine = i.ToString();
+                        alarmi.Add(alarm);
+                    }
                 }
-            }
             return alarmi;
         }
 
