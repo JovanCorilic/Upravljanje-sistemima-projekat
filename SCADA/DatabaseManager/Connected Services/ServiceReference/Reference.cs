@@ -15,6 +15,99 @@ namespace DatabaseManager.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alarm", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
+    [System.SerializableAttribute()]
+    public partial class Alarm : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string granicna_vrednostField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ime_velicineField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string prioritetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tipField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string granicna_vrednost {
+            get {
+                return this.granicna_vrednostField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.granicna_vrednostField, value) != true)) {
+                    this.granicna_vrednostField = value;
+                    this.RaisePropertyChanged("granicna_vrednost");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ime_velicine {
+            get {
+                return this.ime_velicineField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ime_velicineField, value) != true)) {
+                    this.ime_velicineField = value;
+                    this.RaisePropertyChanged("ime_velicine");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string prioritet {
+            get {
+                return this.prioritetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.prioritetField, value) != true)) {
+                    this.prioritetField = value;
+                    this.RaisePropertyChanged("prioritet");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tip {
+            get {
+                return this.tipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tipField, value) != true)) {
+                    this.tipField = value;
+                    this.RaisePropertyChanged("tip");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AI", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
     [System.SerializableAttribute()]
     public partial class AI : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -571,6 +664,24 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajAlarme", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajAlarmeResponse")]
+        System.Xml.Linq.XElement sacuvajAlarme(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajAlarme", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajAlarmeResponse")]
+        System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajAlarmeAsync(string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/PravljenjeAlarma", ReplyAction="http://tempuri.org/IUserProcessing/PravljenjeAlarmaResponse")]
+        string PravljenjeAlarma(DatabaseManager.ServiceReference.Alarm alarm, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/PravljenjeAlarma", ReplyAction="http://tempuri.org/IUserProcessing/PravljenjeAlarmaResponse")]
+        System.Threading.Tasks.Task<string> PravljenjeAlarmaAsync(DatabaseManager.ServiceReference.Alarm alarm, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DajAlarmeOdredjenogTaga", ReplyAction="http://tempuri.org/IUserProcessing/DajAlarmeOdredjenogTagaResponse")]
+        DatabaseManager.ServiceReference.Alarm[] DajAlarmeOdredjenogTaga(string tag_name, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DajAlarmeOdredjenogTaga", ReplyAction="http://tempuri.org/IUserProcessing/DajAlarmeOdredjenogTagaResponse")]
+        System.Threading.Tasks.Task<DatabaseManager.ServiceReference.Alarm[]> DajAlarmeOdredjenogTagaAsync(string tag_name, string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/dajIOAdresu", ReplyAction="http://tempuri.org/IUserProcessing/dajIOAdresuResponse")]
         string dajIOAdresu(string tag_name, string token);
         
@@ -578,10 +689,10 @@ namespace DatabaseManager.ServiceReference {
         System.Threading.Tasks.Task<string> dajIOAdresuAsync(string tag_name, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajXML", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajXMLResponse")]
-        System.Xml.Linq.XElement sacuvajXML();
+        System.Xml.Linq.XElement sacuvajXML(string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajXML", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajXMLResponse")]
-        System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajXMLAsync();
+        System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajXMLAsync(string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTaga", ReplyAction="http://tempuri.org/IUserProcessing/upisivanjeVrednostiIzlaznogTagaResponse")]
         string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token);
@@ -667,6 +778,30 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.DoWorkAsync();
         }
         
+        public System.Xml.Linq.XElement sacuvajAlarme(string token) {
+            return base.Channel.sacuvajAlarme(token);
+        }
+        
+        public System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajAlarmeAsync(string token) {
+            return base.Channel.sacuvajAlarmeAsync(token);
+        }
+        
+        public string PravljenjeAlarma(DatabaseManager.ServiceReference.Alarm alarm, string token) {
+            return base.Channel.PravljenjeAlarma(alarm, token);
+        }
+        
+        public System.Threading.Tasks.Task<string> PravljenjeAlarmaAsync(DatabaseManager.ServiceReference.Alarm alarm, string token) {
+            return base.Channel.PravljenjeAlarmaAsync(alarm, token);
+        }
+        
+        public DatabaseManager.ServiceReference.Alarm[] DajAlarmeOdredjenogTaga(string tag_name, string token) {
+            return base.Channel.DajAlarmeOdredjenogTaga(tag_name, token);
+        }
+        
+        public System.Threading.Tasks.Task<DatabaseManager.ServiceReference.Alarm[]> DajAlarmeOdredjenogTagaAsync(string tag_name, string token) {
+            return base.Channel.DajAlarmeOdredjenogTagaAsync(tag_name, token);
+        }
+        
         public string dajIOAdresu(string tag_name, string token) {
             return base.Channel.dajIOAdresu(tag_name, token);
         }
@@ -675,12 +810,12 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.dajIOAdresuAsync(tag_name, token);
         }
         
-        public System.Xml.Linq.XElement sacuvajXML() {
-            return base.Channel.sacuvajXML();
+        public System.Xml.Linq.XElement sacuvajXML(string token) {
+            return base.Channel.sacuvajXML(token);
         }
         
-        public System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajXMLAsync() {
-            return base.Channel.sacuvajXMLAsync();
+        public System.Threading.Tasks.Task<System.Xml.Linq.XElement> sacuvajXMLAsync(string token) {
+            return base.Channel.sacuvajXMLAsync(token);
         }
         
         public string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token) {

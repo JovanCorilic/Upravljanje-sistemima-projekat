@@ -13,6 +13,24 @@
   <wsdl:message name="IUserProcessing_DoWork_OutputMessage">
     <wsdl:part name="parameters" element="tns:DoWorkResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserProcessing_sacuvajAlarme_InputMessage">
+    <wsdl:part name="parameters" element="tns:sacuvajAlarme" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_sacuvajAlarme_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sacuvajAlarmeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_PravljenjeAlarma_InputMessage">
+    <wsdl:part name="parameters" element="tns:PravljenjeAlarma" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_PravljenjeAlarma_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PravljenjeAlarmaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_DajAlarmeOdredjenogTaga_InputMessage">
+    <wsdl:part name="parameters" element="tns:DajAlarmeOdredjenogTaga" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_DajAlarmeOdredjenogTaga_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DajAlarmeOdredjenogTagaResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserProcessing_dajIOAdresu_InputMessage">
     <wsdl:part name="parameters" element="tns:dajIOAdresu" />
   </wsdl:message>
@@ -78,6 +96,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/DoWork" message="tns:IUserProcessing_DoWork_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/DoWorkResponse" message="tns:IUserProcessing_DoWork_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="sacuvajAlarme">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/sacuvajAlarme" message="tns:IUserProcessing_sacuvajAlarme_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/sacuvajAlarmeResponse" message="tns:IUserProcessing_sacuvajAlarme_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PravljenjeAlarma">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/PravljenjeAlarma" message="tns:IUserProcessing_PravljenjeAlarma_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/PravljenjeAlarmaResponse" message="tns:IUserProcessing_PravljenjeAlarma_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DajAlarmeOdredjenogTaga">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/DajAlarmeOdredjenogTaga" message="tns:IUserProcessing_DajAlarmeOdredjenogTaga_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/DajAlarmeOdredjenogTagaResponse" message="tns:IUserProcessing_DajAlarmeOdredjenogTaga_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="dajIOAdresu">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/dajIOAdresu" message="tns:IUserProcessing_dajIOAdresu_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/dajIOAdresuResponse" message="tns:IUserProcessing_dajIOAdresu_OutputMessage" />
@@ -123,6 +153,33 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
       <soap:operation soapAction="http://tempuri.org/IUserProcessing/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sacuvajAlarme">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/sacuvajAlarme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PravljenjeAlarma">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/PravljenjeAlarma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DajAlarmeOdredjenogTaga">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/DajAlarmeOdredjenogTaga" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

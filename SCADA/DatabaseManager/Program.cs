@@ -51,14 +51,14 @@ namespace DatabaseManager
                 }
                 while (ulogovan) {
                     Console.WriteLine("Unesite opciju\n1.Logout\n2.Pravljenje taga\n3.Brisanje taga\n4.Prikaz vrednosti izlaznih tagova\n" +
-                        "5.Isklucivanje/Ukljucivanje scan kod ulaznog taga\n6.Promena vrednosti izlaznog taga");
+                        "5.Isklucivanje/Ukljucivanje scan kod ulaznog taga\n6.Promena vrednosti izlaznog taga\n7.Pravljenje alarma\n8.Brisanje alarma");
                     int broj1 = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
                     Console.WriteLine();
                     if (broj1 == 1)
                     {
                         proxy.Logout(token);
                         ulogovan = false;
-                        proxy.sacuvajXML().Save("scadaConfig.xml");
+                        proxy.sacuvajXML(token).Save("scadaConfig.xml");
                     }
                     else if (broj1 == 2)
                     {
@@ -71,7 +71,7 @@ namespace DatabaseManager
                         if (proxy.brisanjeTaga(temp, token))
                         {
                             Console.WriteLine("Uspesno obrisan tag!");
-                            proxy.sacuvajXML().Save("scadaConfig.xml");
+                            proxy.sacuvajXML(token).Save("scadaConfig.xml");
                         }
                         else
                             Console.WriteLine("Neuspesno obrisan tag");
@@ -89,10 +89,10 @@ namespace DatabaseManager
                         if (!String.Equals(IO,""))
                         {
                             string vrednost = proxyClient.davanjeVrednosti(IO, naziv);
-                            proxyClient.SendNotification("Naziv taga " + naziv + " vrednost: " + vrednost);
+                            proxyClient.SendNotification(vrednost);
                         }
 
-                        proxy.sacuvajXML().Save("scadaConfig.xml");
+                        proxy.sacuvajXML(token).Save("scadaConfig.xml");
                     }
                     else if (broj1 == 6)
                     {
@@ -100,8 +100,30 @@ namespace DatabaseManager
                         string naziv = Console.ReadLine();
                         Console.WriteLine(proxy.upisivanjeVrednostiIzlaznogTaga(naziv, token));
                     }
+                    else if(broj1 == 7)
+                    {
+                        PravljenjeAlarma(proxy, token);
+                    }
+                    else if(broj1 == 8)
+                    {
+                        
+                    }
                 }
             }
+        }
+        static void PravljenjeAlarma(ServiceReference.UserProcessingClient proxy,string token)
+        {
+            ServiceReference.Alarm alarm = new ServiceReference.Alarm();
+            Console.WriteLine("Unesite tip (high,low):");
+            alarm.tip = Console.ReadLine();
+            Console.WriteLine("Unesite prioritet (1-3):");
+            alarm.prioritet = Console.ReadLine();
+            Console.WriteLine("Unesite granicnu vrednost:");
+            alarm.granicna_vrednost = Console.ReadLine();
+            Console.WriteLine("Unesite ime ulaznog taga tj. ime velicine:");
+            alarm.ime_velicine = Console.ReadLine();
+            proxy.PravljenjeAlarma(alarm, token);
+            proxy.sacuvajAlarme(token).Save("alarmConfig.xml");
         }
 
         static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy,string token, ServiceReference1.DatabseManagerClient proxyClent)
@@ -149,7 +171,7 @@ namespace DatabaseManager
                         Console.WriteLine("Uspesno napravljen AI tag.");
                         string vrednost = proxyClent.davanjeVrednosti(ai.IO_address,ai.tag_name);
                         if(ai.onoff_scan)
-                            proxyClent.SendNotification("Analog input naziv "+ai.tag_name+" vrednost: "+vrednost);
+                            proxyClent.SendNotification("Analog input "+ vrednost);
                     }
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
@@ -204,7 +226,7 @@ namespace DatabaseManager
                     {
                         string vrednost = proxyClent.davanjeVrednosti(di.IO_address,di.tag_name);
                         if(di.onoff_scan)
-                            proxyClent.SendNotification("Digital input naziv " + di.tag_name + " vrednost: " + vrednost);
+                            proxyClent.SendNotification("Digital input "+ vrednost);
                         Console.WriteLine("Uspesno napravljen DI tag.");
                     }
                     else
@@ -225,7 +247,7 @@ namespace DatabaseManager
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
                 }
-                proxy.sacuvajXML().Save("scadaConfig.xml");
+                proxy.sacuvajXML(token).Save("scadaConfig.xml");
             }
         }
     }

@@ -52,7 +52,7 @@ namespace SCADA
                     tagVrednost.vreme_kreacije = DateTime.Now;
                     db.tagVrednosts.Add(tagVrednost);
                     db.SaveChanges();
-                    return tagVrednost.vrednost.ToString();
+                    return tagVrednost.ToString();
 
                     
                 }

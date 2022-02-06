@@ -71,12 +71,29 @@ namespace SCADA
 
         public string PravljenjeAlarma(Alarm alarm, string token)
         {
-            throw new NotImplementedException();
+            if (IsUserAuthenticated(token))
+            {
+                alarms.Add(alarm);
+                return "Uspesno napravljen alarm";
+            }
+            else
+                return "Nema autentikacije";
         }
 
         public List<Alarm> DajAlarmeOdredjenogTaga(string tag_name, string token)
         {
-            throw new NotImplementedException();
+            List<Alarm> alarmi = new List<Alarm>();
+            int i = -1;
+            foreach(Alarm alarm in alarms)
+            {
+                if (String.Equals(alarm.ime_velicine, tag_name))
+                {
+                    i++;
+                    alarm.ime_velicine = i.ToString();
+                    alarmi.Add(alarm);
+                }
+            }
+            return alarmi;
         }
 
         public string dajIOAdresu(string tag_name, string token)
@@ -489,6 +506,7 @@ namespace SCADA
                         string token = GenerateToken(username);
                         authenticatedUsers.Add(token, user);
                         ucitavanjeXML();
+                        ucitajAlarme();
                         return token;
                     }
                 }
