@@ -21,11 +21,24 @@ namespace SCADA
         private static Dictionary<string, AO> aOs = new Dictionary<string, AO>();
         private static Dictionary<string, DI> dIs = new Dictionary<string, DI>();
         private static Dictionary<string, DO> dOs = new Dictionary<string, DO>();
+        private static List<Alarm> alarms = new List<Alarm>();
 
         public void DoWork()
         {
 
 
+        }
+
+
+
+        public string PravljenjeAlarma(Alarm alarm, string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Alarm> DajAlarmeOdredjenogTaga(string tag_name, string token)
+        {
+            throw new NotImplementedException();
         }
 
         public string dajIOAdresu(string tag_name, string token)
@@ -123,8 +136,8 @@ namespace SCADA
         {
             if (IsUserAuthenticated(token))
             {
-                string temp1 = "Vrednosti analog output taga:\n";
-                string temp2 = "Vrednosti digital output taga:\n";
+                string temp1 = "Vrednosti analog output tagova:\n";
+                string temp2 = "Vrednosti digital output tagova:\n";
                 using(var db = new TagsContext())
                 {
                     foreach(TagVrednost tagVrednost in db.tagVrednosts)
@@ -205,7 +218,7 @@ namespace SCADA
                         tagName = aI.tag_name;
                         IO = aI.IO_address;
                         aIs.Add(aI.tag_name, aI);
-                        sacuvajXML();
+                        
                         return true;
                     }
                     else
@@ -231,7 +244,7 @@ namespace SCADA
                         tagName = dI.tag_name;
                         IO = dI.IO_address;
                         dIs.Add(dI.tag_name, dI);
-                        sacuvajXML();
+                        
                         return true;
                     }
                     else
@@ -276,43 +289,47 @@ namespace SCADA
             
         }
 
-        public XElement sacuvajXML()
+        public XElement sacuvajXML(string token)
         {
-            XElement xElement = new XElement("SCADA_konfiguracija");
-            
-            XElement ai = new XElement("AI");
-            foreach(AI i in aIs.Values)
+            if (IsUserAuthenticated(token))
             {
-                ai.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("driver", i.driver), new XAttribute("IO_address", i.IO_address),
-                    new XAttribute("scan_time", i.scan_time), new XAttribute("alarms", i.alarms), new XAttribute("onoff_scan", i.onoff_scan), new XAttribute("low_limit", i.low_limit),
-                    new XAttribute("high_limit", i.high_limit), new XAttribute("units", i.units)));
-            }
-            xElement.Add(ai);
-            XElement ao = new XElement("AO");
-            foreach(AO i in aOs.Values)
-            {
-                ao.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("IO_address", i.IO_address),
-                    new XAttribute("inital_value", i.inital_value), new XAttribute("low_limit", i.low_limit),
-                    new XAttribute("high_limit", i.high_limit), new XAttribute("units", i.units)));
-            }
-            xElement.Add(ao);
-            XElement di = new XElement("DI");
-            foreach(DI i in dIs.Values)
-            {
-                di.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("driver", i.driver), new XAttribute("IO_address", i.IO_address),
-                    new XAttribute("scan_time", i.scan_time), new XAttribute("onoff_scan", i.onoff_scan)));
-            }
-            xElement.Add(di);
-            XElement dO = new XElement("DO");
-            foreach(DO i in dOs.Values)
-            {
-                dO.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("IO_address", i.IO_address),
-                    new XAttribute("inital_value", i.inital_value)));
-            }
-            
-            xElement.Add(dO);
-            return xElement;
+                XElement xElement = new XElement("SCADA_konfiguracija");
 
+                XElement ai = new XElement("AI");
+                foreach (AI i in aIs.Values)
+                {
+                    ai.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("driver", i.driver), new XAttribute("IO_address", i.IO_address),
+                        new XAttribute("scan_time", i.scan_time), new XAttribute("alarms", i.alarms), new XAttribute("onoff_scan", i.onoff_scan), new XAttribute("low_limit", i.low_limit),
+                        new XAttribute("high_limit", i.high_limit), new XAttribute("units", i.units)));
+                }
+                xElement.Add(ai);
+                XElement ao = new XElement("AO");
+                foreach (AO i in aOs.Values)
+                {
+                    ao.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("IO_address", i.IO_address),
+                        new XAttribute("inital_value", i.inital_value), new XAttribute("low_limit", i.low_limit),
+                        new XAttribute("high_limit", i.high_limit), new XAttribute("units", i.units)));
+                }
+                xElement.Add(ao);
+                XElement di = new XElement("DI");
+                foreach (DI i in dIs.Values)
+                {
+                    di.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("driver", i.driver), new XAttribute("IO_address", i.IO_address),
+                        new XAttribute("scan_time", i.scan_time), new XAttribute("onoff_scan", i.onoff_scan)));
+                }
+                xElement.Add(di);
+                XElement dO = new XElement("DO");
+                foreach (DO i in dOs.Values)
+                {
+                    dO.Add(new XElement("tag_name", i.tag_name, new XAttribute("description", i.description), new XAttribute("IO_address", i.IO_address),
+                        new XAttribute("inital_value", i.inital_value)));
+                }
+
+                xElement.Add(dO);
+                return xElement;
+            }
+            else
+                return null;
         }
 
         private void ucitavanjeXML()

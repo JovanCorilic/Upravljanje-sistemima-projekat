@@ -20,7 +20,7 @@ namespace SCADA
 
         public override string ToString()
         {
-            return "Tag name " + tag_name + ", vrednost " + vrednost.ToString() ;
+            return "Tag name " + tag_name + ", vrednost " + vrednost.ToString()+" ,vreme kreacije "+vreme_kreacije.ToString() ;
         }
     }
 }

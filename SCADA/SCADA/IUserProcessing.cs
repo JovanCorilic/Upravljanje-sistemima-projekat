@@ -15,9 +15,13 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        string PravljenjeAlarma(Alarm alarm,string token);
+        [OperationContract]
+        List<Alarm> DajAlarmeOdredjenogTaga(string tag_name, string token);
+        [OperationContract]
         string dajIOAdresu(string tag_name, string token);
         [OperationContract]
-        XElement sacuvajXML();
+        XElement sacuvajXML(string token);
         [OperationContract]
         string upisivanjeVrednostiIzlaznogTaga(string tag_name, string token);
         [OperationContract]
