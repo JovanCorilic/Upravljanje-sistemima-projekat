@@ -664,6 +664,12 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/daLiJeAnalogni", ReplyAction="http://tempuri.org/IUserProcessing/daLiJeAnalogniResponse")]
+        bool daLiJeAnalogni(string tag_name, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/daLiJeAnalogni", ReplyAction="http://tempuri.org/IUserProcessing/daLiJeAnalogniResponse")]
+        System.Threading.Tasks.Task<bool> daLiJeAnalogniAsync(string tag_name, string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeAlarma", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeAlarmaResponse")]
         string brisanjeAlarma(int broj, string token);
         
@@ -782,6 +788,14 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task DoWorkAsync() {
             return base.Channel.DoWorkAsync();
+        }
+        
+        public bool daLiJeAnalogni(string tag_name, string token) {
+            return base.Channel.daLiJeAnalogni(tag_name, token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> daLiJeAnalogniAsync(string tag_name, string token) {
+            return base.Channel.daLiJeAnalogniAsync(tag_name, token);
         }
         
         public string brisanjeAlarma(int broj, string token) {

@@ -25,6 +25,7 @@ namespace SCADA
     {
         [OperationContract]
         void SendNotification(string message);
-
+        [OperationContract]
+        AlarmInformacija pravljenjeAlarmInformacije(Alarm alarm, TagVrednost tagVrednost);
     }
 }

@@ -22,5 +22,13 @@ namespace SCADA
         {
             return "Tag name " + tag_name + ", vrednost " + vrednost.ToString()+" ,vreme kreacije "+vreme_kreacije.ToString() ;
         }
+
+        public TagVrednost(int id, string tag_name, double vrednost, DateTime vreme_kreacije)
+        {
+            Id = id;
+            this.tag_name = tag_name;
+            this.vrednost = vrednost;
+            this.vreme_kreacije = vreme_kreacije;
+        }
     }
 }

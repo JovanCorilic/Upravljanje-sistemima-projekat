@@ -29,6 +29,18 @@ namespace SCADA
 
         }
 
+        public bool daLiJeAnalogni(string tag_name, string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                if (aIs.ContainsKey(tag_name))
+                    return true;
+                else
+                    return false;
+            }else
+                return false;
+        }
+
         public string brisanjeAlarma(int broj, string token)
         {
             if (IsUserAuthenticated(token))

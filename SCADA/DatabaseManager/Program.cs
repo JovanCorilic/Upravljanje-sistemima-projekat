@@ -16,7 +16,7 @@ namespace DatabaseManager
             string token = "";
             ServiceReference.UserProcessingClient proxy = new ServiceReference.UserProcessingClient();
             ServiceReference1.DatabseManagerClient proxyClient = new ServiceReference1.DatabseManagerClient();
-            
+            ServiceReference2.DatabaseManagerAlarmClient proxyAlarm = new ServiceReference2.DatabaseManagerAlarmClient();
             bool ulogovan = false;
             while (true)
             {
@@ -62,7 +62,7 @@ namespace DatabaseManager
                     }
                     else if (broj1 == 2)
                     {
-                        PravljenjeTagova(proxy, token, proxyClient);
+                        PravljenjeTagova(proxy, token, proxyClient,proxyAlarm);
                     }
                     else if (broj1 == 3)
                     {
@@ -88,8 +88,19 @@ namespace DatabaseManager
                         string IO = proxy.dajIOAdresu(naziv, token);
                         if (!String.Equals(IO,""))
                         {
-                            string vrednost = proxyClient.davanjeVrednosti(IO, naziv);
-                            proxyClient.SendNotification(vrednost);
+                            var vrednost = proxyClient.davanjeVrednosti(IO, naziv);
+                            proxyClient.SendNotification(vrednost.ToString());
+                            if (proxy.daLiJeAnalogni(vrednost.tag_name,token))
+                            {
+                                var lista = proxy.DajAlarmeOdredjenogTaga(vrednost.tag_name,token);
+                                foreach(var temp in lista)
+                                {
+                                    ServiceReference2.Alarm temp1 = new ServiceReference2.Alarm(temp.tip,temp.prioritet,temp.granicna_vrednost,temp.ime_velicine);
+                                    var alarmInformacija = proxyAlarm.pravljenjeAlarmInformacije(temp, vrednost);
+
+                                }
+                            }
+
                         }
 
                         proxy.sacuvajXML(token).Save("scadaConfig.xml");
@@ -138,7 +149,7 @@ namespace DatabaseManager
             proxy.sacuvajAlarme(token).Save("alarmConfig.xml");
         }
 
-        static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy,string token, ServiceReference1.DatabseManagerClient proxyClent)
+        static void PravljenjeTagova(ServiceReference.UserProcessingClient proxy,string token, ServiceReference1.DatabseManagerClient proxyClent, ServiceReference2.DatabaseManagerAlarmClient proxyAlarm)
         {
             while (true)
             {
@@ -181,9 +192,10 @@ namespace DatabaseManager
                     if (proxy.pravljenjeTaga(ai, null, null,null, broj1, token))
                     {
                         Console.WriteLine("Uspesno napravljen AI tag.");
-                        string vrednost = proxyClent.davanjeVrednosti(ai.IO_address,ai.tag_name);
+                        var vrednost = proxyClent.davanjeVrednosti(ai.IO_address,ai.tag_name);
                         if(ai.onoff_scan)
-                            proxyClent.SendNotification("Analog input "+ vrednost);
+                            proxyClent.SendNotification("Analog input "+ vrednost.ToString());
+                        
                     }
                     else
                         Console.WriteLine("Operacija ne moze da se izvrsi!");
@@ -236,9 +248,9 @@ namespace DatabaseManager
                     }
                     if (proxy.pravljenjeTaga(null,null,di,null, broj1, token))
                     {
-                        string vrednost = proxyClent.davanjeVrednosti(di.IO_address,di.tag_name);
+                        var vrednost = proxyClent.davanjeVrednosti(di.IO_address,di.tag_name);
                         if(di.onoff_scan)
-                            proxyClent.SendNotification("Digital input "+ vrednost);
+                            proxyClent.SendNotification("Digital input "+ vrednost.ToString());
                         Console.WriteLine("Uspesno napravljen DI tag.");
                     }
                     else

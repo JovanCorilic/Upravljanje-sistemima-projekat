@@ -25,48 +25,6 @@ namespace SCADA
 
         }
 
-        private void ucitajAlarme()
-        {
-            if (File.Exists("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/alarmConfig.xml"))
-            {
-                alarms = new List<Alarm>();
-                XElement xmlData = XElement.Load("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/alarmConfig.xml");
-                XElement lista = (XElement)xmlData.FirstNode;
-                while (lista != null)
-                {
-                    Alarm alarm = new Alarm();
-                    var attribute = lista.FirstAttribute;
-                    alarm.tip = attribute.Value;
-                    attribute = attribute.NextAttribute;
-                    alarm.prioritet = attribute.Value;
-                    attribute = attribute.NextAttribute;
-                    alarm.granicna_vrednost = attribute.Value;
-                    attribute = attribute.NextAttribute;
-                    alarm.ime_velicine = attribute.Value;
-                    alarms.Add(alarm);
-                    lista = (XElement)lista.NextNode;
-                }
-            }
-        }
-
-        private List<Alarm> DajAlarmeOdredjenogTaga(string tag_name)
-        {
-            List<Alarm> alarmi = new List<Alarm>();
-            int i = -1;
-            foreach (Alarm alarm in alarms)
-            {
-                if (String.Equals(alarm.ime_velicine, tag_name))
-                {
-                    i++;
-                    alarm.ime_velicine = i.ToString();
-                    alarmi.Add(alarm);
-                }
-            }
-            return alarmi;
-        }
-
-
-
         public void TagProccesingInitalization()
         {
             proxy = OperationContext.Current.GetCallbackChannel<INotificationServiceCallBack>();
@@ -81,7 +39,7 @@ namespace SCADA
 
         }
 
-        public string davanjeVrednosti(string IO, string tag_name)
+        public TagVrednost davanjeVrednosti(string IO, string tag_name)
         {
             using (var db = new TagsContext())
             {
@@ -94,15 +52,13 @@ namespace SCADA
                     db.tagVrednosts.Add(tagVrednost);
                     db.SaveChanges();
 
-
-
-                    return tagVrednost.ToString();
+                    return tagVrednost;
 
                     
                 }
                 catch (Exception e)
                 {
-                    return "Error";
+                    return null;
                 }
             }
             

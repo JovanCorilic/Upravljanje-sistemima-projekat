@@ -65,6 +65,9 @@
     <None Include="Connected Services\ServiceReference\TagProcessing2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\Trending.ServiceReference.TagVrednost.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

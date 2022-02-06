@@ -30,5 +30,46 @@ namespace SCADA
             if (notificationSent != null)
                 notificationSent(message);
         }
+
+        public AlarmInformacija pravljenjeAlarmInformacije(Alarm alarm, TagVrednost tagVrednost)
+        {
+            using (var db = new AlarmsContext())
+            {
+                try
+                {
+                    AlarmInformacija alarmInformacija = new AlarmInformacija();
+                    if (String.Equals(alarm.tip, "low"))
+                    {
+                        if (double.Parse(alarm.granicna_vrednost) > tagVrednost.vrednost)
+                        {
+                            alarmInformacija.tip = alarm.tip;
+                            alarmInformacija.vreme_aktivacije = DateTime.Now;
+                            alarmInformacija.ime_velicine = alarm.ime_velicine;
+                            db.alarmInformacijas.Add(alarmInformacija);
+                            db.SaveChanges();
+                            return alarmInformacija;
+                        }
+                    }
+                    else if (String.Equals(alarm.tip, "high"))
+                    {
+                        if (double.Parse(alarm.granicna_vrednost) < tagVrednost.vrednost)
+                        {
+                            alarmInformacija.tip = alarm.tip;
+                            alarmInformacija.vreme_aktivacije = DateTime.Now;
+                            alarmInformacija.ime_velicine = alarm.ime_velicine;
+                            db.alarmInformacijas.Add(alarmInformacija);
+                            db.SaveChanges();
+                            return alarmInformacija;
+                        }
+                    }
+                    return null;
+
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

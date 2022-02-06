@@ -31,6 +31,6 @@ namespace SCADA
         [OperationContract]
         void SendNotification(string message);
         [OperationContract]
-        string davanjeVrednosti(string IO,string tag_name);
+        TagVrednost davanjeVrednosti(string IO,string tag_name);
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alarm_display.ServiceReference {
+namespace DatabaseManager.ServiceReference2 {
     using System.Runtime.Serialization;
     using System;
     
@@ -293,7 +293,7 @@ namespace Alarm_display.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IDatabaseManagerAlarm")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IDatabaseManagerAlarm")]
     public interface IDatabaseManagerAlarm {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatabaseManagerAlarm/SendNotification", ReplyAction="http://tempuri.org/IDatabaseManagerAlarm/SendNotificationResponse")]
@@ -303,19 +303,19 @@ namespace Alarm_display.ServiceReference {
         System.Threading.Tasks.Task SendNotificationAsync(string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatabaseManagerAlarm/pravljenjeAlarmInformacije", ReplyAction="http://tempuri.org/IDatabaseManagerAlarm/pravljenjeAlarmInformacijeResponse")]
-        Alarm_display.ServiceReference.AlarmInformacija pravljenjeAlarmInformacije(Alarm_display.ServiceReference.Alarm alarm, Alarm_display.ServiceReference.TagVrednost tagVrednost);
+        DatabaseManager.ServiceReference2.AlarmInformacija pravljenjeAlarmInformacije(DatabaseManager.ServiceReference2.Alarm alarm, DatabaseManager.ServiceReference2.TagVrednost tagVrednost);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatabaseManagerAlarm/pravljenjeAlarmInformacije", ReplyAction="http://tempuri.org/IDatabaseManagerAlarm/pravljenjeAlarmInformacijeResponse")]
-        System.Threading.Tasks.Task<Alarm_display.ServiceReference.AlarmInformacija> pravljenjeAlarmInformacijeAsync(Alarm_display.ServiceReference.Alarm alarm, Alarm_display.ServiceReference.TagVrednost tagVrednost);
+        System.Threading.Tasks.Task<DatabaseManager.ServiceReference2.AlarmInformacija> pravljenjeAlarmInformacijeAsync(DatabaseManager.ServiceReference2.Alarm alarm, DatabaseManager.ServiceReference2.TagVrednost tagVrednost);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDatabaseManagerAlarmChannel : Alarm_display.ServiceReference.IDatabaseManagerAlarm, System.ServiceModel.IClientChannel {
+    public interface IDatabaseManagerAlarmChannel : DatabaseManager.ServiceReference2.IDatabaseManagerAlarm, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DatabaseManagerAlarmClient : System.ServiceModel.ClientBase<Alarm_display.ServiceReference.IDatabaseManagerAlarm>, Alarm_display.ServiceReference.IDatabaseManagerAlarm {
+    public partial class DatabaseManagerAlarmClient : System.ServiceModel.ClientBase<DatabaseManager.ServiceReference2.IDatabaseManagerAlarm>, DatabaseManager.ServiceReference2.IDatabaseManagerAlarm {
         
         public DatabaseManagerAlarmClient() {
         }
@@ -344,17 +344,17 @@ namespace Alarm_display.ServiceReference {
             return base.Channel.SendNotificationAsync(message);
         }
         
-        public Alarm_display.ServiceReference.AlarmInformacija pravljenjeAlarmInformacije(Alarm_display.ServiceReference.Alarm alarm, Alarm_display.ServiceReference.TagVrednost tagVrednost) {
+        public DatabaseManager.ServiceReference2.AlarmInformacija pravljenjeAlarmInformacije(DatabaseManager.ServiceReference2.Alarm alarm, DatabaseManager.ServiceReference2.TagVrednost tagVrednost) {
             return base.Channel.pravljenjeAlarmInformacije(alarm, tagVrednost);
         }
         
-        public System.Threading.Tasks.Task<Alarm_display.ServiceReference.AlarmInformacija> pravljenjeAlarmInformacijeAsync(Alarm_display.ServiceReference.Alarm alarm, Alarm_display.ServiceReference.TagVrednost tagVrednost) {
+        public System.Threading.Tasks.Task<DatabaseManager.ServiceReference2.AlarmInformacija> pravljenjeAlarmInformacijeAsync(DatabaseManager.ServiceReference2.Alarm alarm, DatabaseManager.ServiceReference2.TagVrednost tagVrednost) {
             return base.Channel.pravljenjeAlarmInformacijeAsync(alarm, tagVrednost);
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IAlarmDisplay", CallbackContract=typeof(Alarm_display.ServiceReference.IAlarmDisplayCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IAlarmDisplay", CallbackContract=typeof(DatabaseManager.ServiceReference2.IAlarmDisplayCallback))]
     public interface IAlarmDisplay {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAlarmDisplay/DoWork", ReplyAction="http://tempuri.org/IAlarmDisplay/DoWorkResponse")]
@@ -378,12 +378,12 @@ namespace Alarm_display.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAlarmDisplayChannel : Alarm_display.ServiceReference.IAlarmDisplay, System.ServiceModel.IClientChannel {
+    public interface IAlarmDisplayChannel : DatabaseManager.ServiceReference2.IAlarmDisplay, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AlarmDisplayClient : System.ServiceModel.DuplexClientBase<Alarm_display.ServiceReference.IAlarmDisplay>, Alarm_display.ServiceReference.IAlarmDisplay {
+    public partial class AlarmDisplayClient : System.ServiceModel.DuplexClientBase<DatabaseManager.ServiceReference2.IAlarmDisplay>, DatabaseManager.ServiceReference2.IAlarmDisplay {
         
         public AlarmDisplayClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {

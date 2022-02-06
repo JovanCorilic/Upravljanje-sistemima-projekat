@@ -15,6 +15,99 @@ namespace Trending.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TagVrednost", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
+    [System.SerializableAttribute()]
+    public partial class TagVrednost : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tag_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double vrednostField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime vreme_kreacijeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tag_name {
+            get {
+                return this.tag_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tag_nameField, value) != true)) {
+                    this.tag_nameField = value;
+                    this.RaisePropertyChanged("tag_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double vrednost {
+            get {
+                return this.vrednostField;
+            }
+            set {
+                if ((this.vrednostField.Equals(value) != true)) {
+                    this.vrednostField = value;
+                    this.RaisePropertyChanged("vrednost");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime vreme_kreacije {
+            get {
+                return this.vreme_kreacijeField;
+            }
+            set {
+                if ((this.vreme_kreacijeField.Equals(value) != true)) {
+                    this.vreme_kreacijeField = value;
+                    this.RaisePropertyChanged("vreme_kreacije");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AI", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
     [System.SerializableAttribute()]
     public partial class AI : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -338,10 +431,10 @@ namespace Trending.ServiceReference {
         System.Threading.Tasks.Task SendNotificationAsync(string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatabseManager/davanjeVrednosti", ReplyAction="http://tempuri.org/IDatabseManager/davanjeVrednostiResponse")]
-        string davanjeVrednosti(string IO, string tag_name);
+        Trending.ServiceReference.TagVrednost davanjeVrednosti(string IO, string tag_name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatabseManager/davanjeVrednosti", ReplyAction="http://tempuri.org/IDatabseManager/davanjeVrednostiResponse")]
-        System.Threading.Tasks.Task<string> davanjeVrednostiAsync(string IO, string tag_name);
+        System.Threading.Tasks.Task<Trending.ServiceReference.TagVrednost> davanjeVrednostiAsync(string IO, string tag_name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -379,11 +472,11 @@ namespace Trending.ServiceReference {
             return base.Channel.SendNotificationAsync(message);
         }
         
-        public string davanjeVrednosti(string IO, string tag_name) {
+        public Trending.ServiceReference.TagVrednost davanjeVrednosti(string IO, string tag_name) {
             return base.Channel.davanjeVrednosti(IO, tag_name);
         }
         
-        public System.Threading.Tasks.Task<string> davanjeVrednostiAsync(string IO, string tag_name) {
+        public System.Threading.Tasks.Task<Trending.ServiceReference.TagVrednost> davanjeVrednostiAsync(string IO, string tag_name) {
             return base.Channel.davanjeVrednostiAsync(IO, tag_name);
         }
     }
