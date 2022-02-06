@@ -29,7 +29,45 @@ namespace SCADA
 
         }
 
+        public XElement sacuvajAlarme(string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                XElement xElement = new XElement("Alarm_konfiguracija");
+                foreach(Alarm alarm in alarms)
+                {
+                    xElement.Add(new XElement("", new XAttribute("tip", alarm.tip), new XAttribute("prioritet", alarm.prioritet), new XAttribute("granicna_vrednost", alarm.granicna_vrednost)
+                        , new XAttribute("ime_velicine", alarm.ime_velicine)));
+                }
+                return xElement;
+            }
+            else
+                return null;
+        }
 
+        private void ucitajAlarme()
+        {
+            if (File.Exists("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/alarmConfig.xml"))
+            {
+                alarms = new List<Alarm>();
+                XElement xmlData = XElement.Load("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/alarmConfig.xml");
+                XElement lista = (XElement)xmlData.FirstNode;
+                while (lista != null)
+                {
+                    Alarm alarm = new Alarm();
+                    var attribute = lista.FirstAttribute;
+                    alarm.tip = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    alarm.prioritet = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    alarm.granicna_vrednost = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    alarm.ime_velicine = attribute.Value;
+                    alarms.Add(alarm);
+                    lista = (XElement)lista.NextNode;
+                }
+            }
+        }
 
         public string PravljenjeAlarma(Alarm alarm, string token)
         {
