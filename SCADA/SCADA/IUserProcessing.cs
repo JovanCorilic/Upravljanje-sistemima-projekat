@@ -15,6 +15,8 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        string brisanjeAlarma(int broj, string token);
+        [OperationContract]
         XElement sacuvajAlarme(string token);
         [OperationContract]
         string PravljenjeAlarma(Alarm alarm,string token);

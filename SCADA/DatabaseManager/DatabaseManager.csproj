@@ -70,6 +70,9 @@
     <None Include="Connected Services\ServiceReference1\TagProcessing2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\DatabaseManager.ServiceReference.Alarm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\UserProcessing.wsdl" />
     <None Include="Connected Services\ServiceReference\UserProcessing.xsd">
       <SubType>Designer</SubType>

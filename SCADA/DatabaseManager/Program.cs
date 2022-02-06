@@ -106,7 +106,19 @@ namespace DatabaseManager
                     }
                     else if(broj1 == 8)
                     {
-                        
+                        Console.WriteLine("Unesite naziv analognog ulaza:");
+                        string naziv = Console.ReadLine();
+                        var lista = proxy.DajAlarmeOdredjenogTaga(naziv, token);
+                        int br = 0;
+                        Console.WriteLine("Unesite broj koji zelite da obrisete:");
+                        foreach(ServiceReference.Alarm alarm in lista)
+                        {
+                            br++;
+                            Console.WriteLine(br.ToString() + " : " + alarm.ToString());
+                        }
+                        int temp = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
+                        proxy.brisanjeAlarma(temp, token);
+                        proxy.sacuvajAlarme(token).Save("alarmConfig.xml");
                     }
                 }
             }

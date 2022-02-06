@@ -664,6 +664,12 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeAlarma", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeAlarmaResponse")]
+        string brisanjeAlarma(int broj, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeAlarma", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeAlarmaResponse")]
+        System.Threading.Tasks.Task<string> brisanjeAlarmaAsync(int broj, string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajAlarme", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajAlarmeResponse")]
         System.Xml.Linq.XElement sacuvajAlarme(string token);
         
@@ -776,6 +782,14 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task DoWorkAsync() {
             return base.Channel.DoWorkAsync();
+        }
+        
+        public string brisanjeAlarma(int broj, string token) {
+            return base.Channel.brisanjeAlarma(broj, token);
+        }
+        
+        public System.Threading.Tasks.Task<string> brisanjeAlarmaAsync(int broj, string token) {
+            return base.Channel.brisanjeAlarmaAsync(broj, token);
         }
         
         public System.Xml.Linq.XElement sacuvajAlarme(string token) {

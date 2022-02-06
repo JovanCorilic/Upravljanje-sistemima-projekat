@@ -11,6 +11,21 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="brisanjeAlarma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="broj" type="xs:int" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="brisanjeAlarmaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="brisanjeAlarmaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="sacuvajAlarme">
     <xs:complexType>
       <xs:sequence>

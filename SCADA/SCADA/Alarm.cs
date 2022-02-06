@@ -18,5 +18,9 @@ namespace SCADA
         [DataMember]
         public string ime_velicine { get; set; }
 
+        public override string ToString()
+        {
+            return "Tip " + tip + " , prioritet " + prioritet + " , granicna vrednost " + granicna_vrednost;
+        }
     }
 }

@@ -29,6 +29,18 @@ namespace SCADA
 
         }
 
+        public string brisanjeAlarma(int broj, string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                
+                alarms.RemoveAt(broj);
+                return "Uspesno obrisano";
+            }
+            else
+                return "Nema autentikacije";
+        }
+
         public XElement sacuvajAlarme(string token)
         {
             if (IsUserAuthenticated(token))
