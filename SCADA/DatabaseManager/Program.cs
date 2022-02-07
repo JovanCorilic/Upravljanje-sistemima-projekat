@@ -85,12 +85,14 @@ namespace DatabaseManager
                     {
                         Console.WriteLine("Unesite naziv taga:");
                         string naziv = Console.ReadLine();
-                        Console.WriteLine(proxy.ukljucivanjeIsklucivanjeScan(naziv,token));
+                        string nesto = proxy.ukljucivanjeIsklucivanjeScan(naziv,token);
+                        Console.WriteLine(nesto);
                         string IO = proxy.dajIOAdresu(naziv, token);
                         if (!String.Equals(IO,""))
                         {
                             var vrednost = proxyClient.davanjeVrednosti(IO, naziv);
-                            proxyClient.SendNotification(vrednost.ToString());
+                            if (String.Equals(nesto, "Skeniranje ukljuceno"))
+                                proxyClient.SendNotification(vrednost.ToString());
                             ServiceReference2.Alarm temp1 = new ServiceReference2.Alarm();
                             
                             ServiceReference2.TagVrednost tagVrednost = new ServiceReference2.TagVrednost();
@@ -103,6 +105,7 @@ namespace DatabaseManager
                                 var lista = proxy.DajAlarmeOdredjenogTaga(vrednost.tag_name,token);
                                 foreach(var temp in lista)
                                 {
+                                    temp1 = new ServiceReference2.Alarm();
                                     temp1.tip = temp.tip;
                                     temp1.prioritet = temp.prioritet;
                                     temp1.granicna_vrednost = temp.granicna_vrednost;

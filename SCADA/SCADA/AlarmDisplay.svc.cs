@@ -45,6 +45,7 @@ namespace SCADA
                             alarmInformacija.tip = alarm.tip;
                             alarmInformacija.vreme_aktivacije = DateTime.Now;
                             alarmInformacija.ime_velicine = alarm.ime_velicine;
+                            alarmInformacija.prioritet = alarm.prioritet;
                             db.alarmInformacijas.Add(alarmInformacija);
                             db.SaveChanges();
                             return alarmInformacija;
