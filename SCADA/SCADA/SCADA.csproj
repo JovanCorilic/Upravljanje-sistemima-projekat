@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AlarmDisplay.svc" />
+    <Content Include="Report-Manager.svc" />
     <Content Include="TagProcessing.svc" />
     <Content Include="UserProcessing.svc" />
     <Content Include="Web.config" />
@@ -88,9 +89,13 @@
     <Compile Include="DI.cs" />
     <Compile Include="DO.cs" />
     <Compile Include="IAlarmDisplay.cs" />
+    <Compile Include="IReport-Manager.cs" />
     <Compile Include="ITagProcessing.cs" />
     <Compile Include="IUserProcessing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report-Manager.svc.cs">
+      <DependentUpon>Report-Manager.svc</DependentUpon>
+    </Compile>
     <Compile Include="TagProcessing.svc.cs">
       <DependentUpon>TagProcessing.svc</DependentUpon>
     </Compile>

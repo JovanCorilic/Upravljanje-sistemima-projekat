@@ -14,6 +14,10 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        List<TagVrednost> sveVrednostiSaOdredjenimIdentifikatorom(string tag_name);
+        [OperationContract]
+        List<TagVrednost> poslednjaVrednostDItaga();
+        [OperationContract]
         List<TagVrednost> poslednjaVrednostAItaga();
         [OperationContract]
         List<TagVrednost> sveVrednostiTagovaUOdredjenomVremenu(DateTime pocetak, DateTime kraj);

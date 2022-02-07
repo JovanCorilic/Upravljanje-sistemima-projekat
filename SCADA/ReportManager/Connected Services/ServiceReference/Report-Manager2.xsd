@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:59065/Report-Manager.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SCADA" />
+  <xs:element name="DoWork">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoWorkResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sveVrednostiSaOdredjenimIdentifikatorom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tag_name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sveVrednostiSaOdredjenimIdentifikatoromResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="sveVrednostiSaOdredjenimIdentifikatoromResult" nillable="true" type="q1:ArrayOfTagVrednost" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="poslednjaVrednostDItaga">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="poslednjaVrednostDItagaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="poslednjaVrednostDItagaResult" nillable="true" type="q2:ArrayOfTagVrednost" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="poslednjaVrednostAItaga">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="poslednjaVrednostAItagaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="poslednjaVrednostAItagaResult" nillable="true" type="q3:ArrayOfTagVrednost" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sveVrednostiTagovaUOdredjenomVremenu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pocetak" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kraj" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sveVrednostiTagovaUOdredjenomVremenuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="sveVrednostiTagovaUOdredjenomVremenuResult" nillable="true" type="q4:ArrayOfTagVrednost" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sviAlarmiOdredjenVremPeriod">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pocetak" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kraj" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sviAlarmiOdredjenVremPeriodResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="sviAlarmiOdredjenVremPeriodResult" nillable="true" type="q5:ArrayOfAlarmInformacija" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sviAlarmiOdredjenogPrioriteta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="prioritet" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sviAlarmiOdredjenogPrioritetaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="sviAlarmiOdredjenogPrioritetaResult" nillable="true" type="q6:ArrayOfAlarmInformacija" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

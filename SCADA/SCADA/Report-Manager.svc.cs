@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
+using System.Xml.Linq;
 
 namespace SCADA
 {
@@ -15,14 +17,142 @@ namespace SCADA
         private static List<TagVrednost> tagVrednosts = new List<TagVrednost>();
         private static List<AlarmInformacija> alarmInformacijas = new List<AlarmInformacija>();
         private static Dictionary<string, User> authenticatedUsers = new Dictionary<string, User>();
+        private static Dictionary<string, AI> aIs = new Dictionary<string, AI>();
+        
+        private static Dictionary<string, DI> dIs = new Dictionary<string, DI>();
+        
         public void DoWork()
         {
         }
 
+        public List<TagVrednost> sveVrednostiSaOdredjenimIdentifikatorom(string tag_name)
+        {
+            List<TagVrednost> lista = new List<TagVrednost>();
+            ucitavanjeVrednostiTaga();
+            foreach(var temp in tagVrednosts)
+            {
+                if (String.Equals(temp.tag_name, tag_name))
+                {
+                    lista.Add(temp);
+                }
+            }
+            return lista;
+        }
+
+        public List<TagVrednost> poslednjaVrednostDItaga()
+        {
+            List<TagVrednost> lista = new List<TagVrednost>();
+            ucitavanjeVrednostiTaga();
+            ucitavanjeXML();
+            foreach (var key in dIs.Keys)
+            {
+                List<TagVrednost> listaVrednosti = new List<TagVrednost>();
+                foreach (var temp in tagVrednosts)
+                {
+                    if (String.Equals(temp.tag_name, key))
+                    {
+                        listaVrednosti.Add(temp);
+                    }
+                }
+                var tagVrednost = listaVrednosti.OrderBy(m => m.vreme_kreacije > DateTime.Now
+                                                                    ? m.vreme_kreacije - DateTime.Now
+                                                                    : DateTime.Now - m.vreme_kreacije)
+                                            .Take(1);
+                lista.Add(tagVrednost.First());
+            }
+            return lista;
+        }
+
         public List<TagVrednost> poslednjaVrednostAItaga()
         {
-
+            List<TagVrednost> lista = new List<TagVrednost>();
+            ucitavanjeVrednostiTaga();
+            ucitavanjeXML();
+            foreach(var key in aIs.Keys)
+            {
+                List<TagVrednost> listaVrednosti = new List<TagVrednost>();
+                foreach(var temp in tagVrednosts)
+                {
+                    if (String.Equals(temp.tag_name, key))
+                    {
+                        listaVrednosti.Add(temp);
+                    }
+                }
+                var tagVrednost = listaVrednosti.OrderBy(m => m.vreme_kreacije > DateTime.Now
+                                                                    ? m.vreme_kreacije - DateTime.Now
+                                                                    : DateTime.Now - m.vreme_kreacije)
+                                            .Take(1);
+                lista.Add(tagVrednost.First());
+            }
+            return lista;
         }
+
+        private void ucitavanjeXML()
+        {
+
+            if (File.Exists("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/scadaConfig.xml"))
+            {
+                aIs = new Dictionary<string, AI>();
+               
+                dIs = new Dictionary<string, DI>();
+                
+                XElement xmlData = XElement.Load("C:/Users/Kssbc/Documents/GitHub/Upravljanje-sistemima-projekat/SCADA/DatabaseManager/bin/Debug/scadaConfig.xml");
+                XElement lista = (XElement)xmlData.FirstNode;
+                XElement listaAI = (XElement)lista.FirstNode;
+                while (listaAI != null)
+                {
+                    AI aI = new AI();
+                    var attribute = listaAI.FirstAttribute;
+                    aI.description = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.driver = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.IO_address = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.scan_time = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.alarms = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.onoff_scan = bool.Parse(attribute.Value);
+                    attribute = attribute.NextAttribute;
+                    aI.low_limit = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.high_limit = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    aI.units = attribute.Value;
+                    aI.tag_name = listaAI.FirstNode.ToString();
+                    aIs.Add(aI.tag_name, aI);
+                    listaAI = (XElement)listaAI.NextNode;
+                }
+
+                lista = (XElement)lista.NextNode;
+                
+                lista = (XElement)lista.NextNode;
+                XElement listaDI = (XElement)lista.FirstNode;
+                while (listaDI != null)
+                {
+                    DI di = new DI();
+                    var attribute = listaDI.FirstAttribute;
+                    di.description = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    di.driver = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    di.IO_address = attribute.Value;
+                    attribute = attribute.NextAttribute;
+                    di.scan_time = attribute.Value;
+                    attribute = attribute.NextAttribute;
+
+                    di.onoff_scan = bool.Parse(attribute.Value);
+
+                    di.tag_name = listaDI.FirstNode.ToString();
+                    dIs.Add(di.tag_name, di);
+                    listaDI = (XElement)listaDI.NextNode;
+                }
+                
+                
+            }
+        }
+
 
         public List<TagVrednost> sveVrednostiTagovaUOdredjenomVremenu(DateTime pocetak, DateTime kraj)
         {

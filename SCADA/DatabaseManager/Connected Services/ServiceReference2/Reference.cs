@@ -215,6 +215,9 @@ namespace DatabaseManager.ServiceReference2 {
         private string ime_velicineField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string prioritetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string tipField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -252,6 +255,19 @@ namespace DatabaseManager.ServiceReference2 {
                 if ((object.ReferenceEquals(this.ime_velicineField, value) != true)) {
                     this.ime_velicineField = value;
                     this.RaisePropertyChanged("ime_velicine");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string prioritet {
+            get {
+                return this.prioritetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.prioritetField, value) != true)) {
+                    this.prioritetField = value;
+                    this.RaisePropertyChanged("prioritet");
                 }
             }
         }

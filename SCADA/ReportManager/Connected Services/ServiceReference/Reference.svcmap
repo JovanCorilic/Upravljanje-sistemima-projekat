@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c9401797-cb77-4be2-af56-b055f16a6632" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59065/Report-Manager.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Report_Manager.wsdl" MetadataType="Wsdl" ID="e0ac511f-98b7-4cc3-8312-86456d2aacfd" SourceId="1" SourceUrl="http://localhost:59065/Report-Manager.svc?wsdl" />
+    <MetadataFile FileName="Report-Manager.xsd" MetadataType="Schema" ID="dd6c56d4-a848-43b2-98c5-f7af94596880" SourceId="1" SourceUrl="http://localhost:59065/Report-Manager.svc?xsd=xsd1" />
+    <MetadataFile FileName="Report-Manager1.xsd" MetadataType="Schema" ID="d3e1df47-7a80-471c-8cdd-259a9d0e73ff" SourceId="1" SourceUrl="http://localhost:59065/Report-Manager.svc?xsd=xsd2" />
+    <MetadataFile FileName="Report-Manager2.xsd" MetadataType="Schema" ID="69f40b42-640d-43e0-b8b5-f5bd5cc4907d" SourceId="1" SourceUrl="http://localhost:59065/Report-Manager.svc?xsd=xsd0" />
+    <MetadataFile FileName="Report-Manager.disco" MetadataType="Disco" ID="d1888211-ea81-4019-8343-33a622369bdf" SourceId="1" SourceUrl="http://localhost:59065/Report-Manager.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
