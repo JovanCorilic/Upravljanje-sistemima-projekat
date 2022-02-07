@@ -15,6 +15,10 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        List<AI> dajSveAITagove(string token);
+        [OperationContract]
+        List<DI> dajSveDITagove(string token);
+        [OperationContract]
         bool daLiJeAnalogni(string tag_name, string token);
         [OperationContract]
         string brisanjeAlarma(int broj, string token);

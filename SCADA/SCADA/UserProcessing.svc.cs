@@ -29,6 +29,34 @@ namespace SCADA
 
         }
 
+        public List<DI> dajSveDITagove(string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                List<DI> lista = new List<DI>();
+                foreach (var temp in dIs.Values)
+                    lista.Add(temp);
+                return lista;
+            }
+            else
+                return null;
+        }
+
+        public List<AI> dajSveAITagove(string token)
+        {
+            if (IsUserAuthenticated(token))
+            {
+                List<AI> lista = new List<AI>();
+                foreach (var temp in aIs.Values)
+                {
+                    lista.Add(temp);
+                }
+                return lista;
+            }
+            else
+                return null;
+        }
+
         public bool daLiJeAnalogni(string tag_name, string token)
         {
             if (IsUserAuthenticated(token))

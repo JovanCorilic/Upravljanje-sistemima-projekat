@@ -91,7 +91,13 @@
     <None Include="Connected Services\ServiceReference2\DatabaseManager.ServiceReference2.AlarmInformacija.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\DatabaseManager.ServiceReference.AI.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\DatabaseManager.ServiceReference.Alarm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\DatabaseManager.ServiceReference.DI.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\UserProcessing.wsdl" />
