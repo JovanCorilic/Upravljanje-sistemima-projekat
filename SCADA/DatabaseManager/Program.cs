@@ -52,7 +52,8 @@ namespace DatabaseManager
                 }
                 while (ulogovan) {
                     Console.WriteLine("Unesite opciju\n1.Logout\n2.Pravljenje taga\n3.Brisanje taga\n4.Prikaz vrednosti izlaznih tagova\n" +
-                        "5.Isklucivanje/Ukljucivanje scan kod ulaznog taga\n6.Promena vrednosti izlaznog taga\n7.Pravljenje alarma\n8.Brisanje alarma");
+                        "5.Isklucivanje/Ukljucivanje scan kod ulaznog taga\n6.Promena vrednosti izlaznog taga\n7.Pravljenje alarma" +
+                        "\n8.Brisanje alarma\n9.Pokreni skeniranje ulaznih alarma");
                     int broj1 = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
                     Console.WriteLine();
                     if (broj1 == 1)
@@ -150,6 +151,10 @@ namespace DatabaseManager
                         int temp = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
                         proxy.brisanjeAlarma(temp, token);
                         proxy.sacuvajAlarme(token).Save("alarmConfig.xml");
+                    }
+                    else if (broj1 == 9)
+                    {
+
                     }
                 }
             }
