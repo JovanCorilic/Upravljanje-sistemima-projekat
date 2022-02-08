@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Alarm_konfiguracija xmlns="">
+  <Alarm tip="low" prioritet="3" granicna_vrednost="50" ime_velicine="1">Alarm</Alarm>
+  <Alarm tip="high" prioritet="3" granicna_vrednost="60" ime_velicine="ai1">Alarm</Alarm>
+</Alarm_konfiguracija>

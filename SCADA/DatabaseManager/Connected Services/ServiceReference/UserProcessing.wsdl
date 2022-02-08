@@ -13,6 +13,12 @@
   <wsdl:message name="IUserProcessing_DoWork_OutputMessage">
     <wsdl:part name="parameters" element="tns:DoWorkResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserProcessing_dajSveOriginalneAlarmeTaga_InputMessage">
+    <wsdl:part name="parameters" element="tns:dajSveOriginalneAlarmeTaga" />
+  </wsdl:message>
+  <wsdl:message name="IUserProcessing_dajSveOriginalneAlarmeTaga_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dajSveOriginalneAlarmeTagaResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserProcessing_dajSveAITagove_InputMessage">
     <wsdl:part name="parameters" element="tns:dajSveAITagove" />
   </wsdl:message>
@@ -120,6 +126,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/DoWork" message="tns:IUserProcessing_DoWork_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/DoWorkResponse" message="tns:IUserProcessing_DoWork_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="dajSveOriginalneAlarmeTaga">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/dajSveOriginalneAlarmeTaga" message="tns:IUserProcessing_dajSveOriginalneAlarmeTaga_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/dajSveOriginalneAlarmeTagaResponse" message="tns:IUserProcessing_dajSveOriginalneAlarmeTaga_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="dajSveAITagove">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserProcessing/dajSveAITagove" message="tns:IUserProcessing_dajSveAITagove_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserProcessing/dajSveAITagoveResponse" message="tns:IUserProcessing_dajSveAITagove_OutputMessage" />
@@ -193,6 +203,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
       <soap:operation soapAction="http://tempuri.org/IUserProcessing/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dajSveOriginalneAlarmeTaga">
+      <soap:operation soapAction="http://tempuri.org/IUserProcessing/dajSveOriginalneAlarmeTaga" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

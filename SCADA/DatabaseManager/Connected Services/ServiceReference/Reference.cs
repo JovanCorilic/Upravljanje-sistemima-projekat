@@ -15,6 +15,99 @@ namespace DatabaseManager.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alarm", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
+    [System.SerializableAttribute()]
+    public partial class Alarm : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string granicna_vrednostField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ime_velicineField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string prioritetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tipField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string granicna_vrednost {
+            get {
+                return this.granicna_vrednostField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.granicna_vrednostField, value) != true)) {
+                    this.granicna_vrednostField = value;
+                    this.RaisePropertyChanged("granicna_vrednost");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ime_velicine {
+            get {
+                return this.ime_velicineField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ime_velicineField, value) != true)) {
+                    this.ime_velicineField = value;
+                    this.RaisePropertyChanged("ime_velicine");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string prioritet {
+            get {
+                return this.prioritetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.prioritetField, value) != true)) {
+                    this.prioritetField = value;
+                    this.RaisePropertyChanged("prioritet");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tip {
+            get {
+                return this.tipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tipField, value) != true)) {
+                    this.tipField = value;
+                    this.RaisePropertyChanged("tip");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AI", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
     [System.SerializableAttribute()]
     public partial class AI : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -329,99 +422,6 @@ namespace DatabaseManager.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Alarm", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
-    [System.SerializableAttribute()]
-    public partial class Alarm : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string granicna_vrednostField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ime_velicineField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string prioritetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string tipField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string granicna_vrednost {
-            get {
-                return this.granicna_vrednostField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.granicna_vrednostField, value) != true)) {
-                    this.granicna_vrednostField = value;
-                    this.RaisePropertyChanged("granicna_vrednost");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ime_velicine {
-            get {
-                return this.ime_velicineField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ime_velicineField, value) != true)) {
-                    this.ime_velicineField = value;
-                    this.RaisePropertyChanged("ime_velicine");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string prioritet {
-            get {
-                return this.prioritetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.prioritetField, value) != true)) {
-                    this.prioritetField = value;
-                    this.RaisePropertyChanged("prioritet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string tip {
-            get {
-                return this.tipField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.tipField, value) != true)) {
-                    this.tipField = value;
-                    this.RaisePropertyChanged("tip");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AO", Namespace="http://schemas.datacontract.org/2004/07/SCADA")]
     [System.SerializableAttribute()]
     public partial class AO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -664,6 +664,12 @@ namespace DatabaseManager.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/DoWork", ReplyAction="http://tempuri.org/IUserProcessing/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/dajSveOriginalneAlarmeTaga", ReplyAction="http://tempuri.org/IUserProcessing/dajSveOriginalneAlarmeTagaResponse")]
+        DatabaseManager.ServiceReference.Alarm[] dajSveOriginalneAlarmeTaga(string tag_name, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/dajSveOriginalneAlarmeTaga", ReplyAction="http://tempuri.org/IUserProcessing/dajSveOriginalneAlarmeTagaResponse")]
+        System.Threading.Tasks.Task<DatabaseManager.ServiceReference.Alarm[]> dajSveOriginalneAlarmeTagaAsync(string tag_name, string token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/dajSveAITagove", ReplyAction="http://tempuri.org/IUserProcessing/dajSveAITagoveResponse")]
         DatabaseManager.ServiceReference.AI[] dajSveAITagove(string token);
         
@@ -800,6 +806,14 @@ namespace DatabaseManager.ServiceReference {
         
         public System.Threading.Tasks.Task DoWorkAsync() {
             return base.Channel.DoWorkAsync();
+        }
+        
+        public DatabaseManager.ServiceReference.Alarm[] dajSveOriginalneAlarmeTaga(string tag_name, string token) {
+            return base.Channel.dajSveOriginalneAlarmeTaga(tag_name, token);
+        }
+        
+        public System.Threading.Tasks.Task<DatabaseManager.ServiceReference.Alarm[]> dajSveOriginalneAlarmeTagaAsync(string tag_name, string token) {
+            return base.Channel.dajSveOriginalneAlarmeTagaAsync(tag_name, token);
         }
         
         public DatabaseManager.ServiceReference.AI[] dajSveAITagove(string token) {

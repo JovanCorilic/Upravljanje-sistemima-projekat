@@ -15,6 +15,8 @@ namespace SCADA
         [OperationContract]
         void DoWork();
         [OperationContract]
+        List<Alarm> dajSveOriginalneAlarmeTaga(string tag_name, string token);
+        [OperationContract]
         List<AI> dajSveAITagove(string token);
         [OperationContract]
         List<DI> dajSveDITagove(string token);

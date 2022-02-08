@@ -35,41 +35,37 @@ namespace SCADA
         {
             using (var db = new AlarmsContext())
             {
-                try
+                
+                AlarmInformacija alarmInformacija = new AlarmInformacija();
+                if (String.Equals(alarm.tip, "low"))
                 {
-                    AlarmInformacija alarmInformacija = new AlarmInformacija();
-                    if (String.Equals(alarm.tip, "low"))
+                    if (double.Parse(alarm.granicna_vrednost) > tagVrednost.vrednost)
                     {
-                        if (double.Parse(alarm.granicna_vrednost) > tagVrednost.vrednost)
-                        {
-                            alarmInformacija.tip = alarm.tip;
-                            alarmInformacija.vreme_aktivacije = DateTime.Now;
-                            alarmInformacija.ime_velicine = alarm.ime_velicine;
-                            alarmInformacija.prioritet = alarm.prioritet;
-                            db.alarmInformacijas.Add(alarmInformacija);
-                            db.SaveChanges();
-                            return alarmInformacija;
-                        }
+                        alarmInformacija.tip = alarm.tip;
+                        alarmInformacija.vreme_aktivacije = DateTime.Now;
+                        alarmInformacija.ime_velicine = alarm.ime_velicine;
+                        alarmInformacija.prioritet = alarm.prioritet;
+                        db.alarmInformacijas.Add(alarmInformacija);
+                        db.SaveChanges();
+                        return alarmInformacija;
                     }
-                    else if (String.Equals(alarm.tip, "high"))
+                }
+                else if (String.Equals(alarm.tip, "high"))
+                {
+                    if (double.Parse(alarm.granicna_vrednost) < tagVrednost.vrednost)
                     {
-                        if (double.Parse(alarm.granicna_vrednost) < tagVrednost.vrednost)
-                        {
-                            alarmInformacija.tip = alarm.tip;
-                            alarmInformacija.vreme_aktivacije = DateTime.Now;
-                            alarmInformacija.ime_velicine = alarm.ime_velicine;
-                            db.alarmInformacijas.Add(alarmInformacija);
-                            db.SaveChanges();
-                            return alarmInformacija;
-                        }
+                        alarmInformacija.tip = alarm.tip;
+                        alarmInformacija.vreme_aktivacije = DateTime.Now;
+                        alarmInformacija.ime_velicine = alarm.ime_velicine;
+                        db.alarmInformacijas.Add(alarmInformacija);
+                        db.SaveChanges();
+                        return alarmInformacija;
                     }
-                    return null;
+                }
+                return null;
 
-                }
-                catch (Exception e)
-                {
-                    return null;
-                }
+                
+                
             }
         }
     }

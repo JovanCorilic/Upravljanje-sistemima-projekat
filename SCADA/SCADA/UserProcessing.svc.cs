@@ -88,7 +88,7 @@ namespace SCADA
                 XElement xElement = new XElement("Alarm_konfiguracija");
                 foreach(Alarm alarm in alarms)
                 {
-                    xElement.Add(new XElement("", new XAttribute("tip", alarm.tip), new XAttribute("prioritet", alarm.prioritet), new XAttribute("granicna_vrednost", alarm.granicna_vrednost)
+                    xElement.Add(new XElement("Alarm","Alarm", new XAttribute("tip", alarm.tip), new XAttribute("prioritet", alarm.prioritet), new XAttribute("granicna_vrednost", alarm.granicna_vrednost)
                         , new XAttribute("ime_velicine", alarm.ime_velicine)));
                 }
                 return xElement;
@@ -130,6 +130,22 @@ namespace SCADA
             }
             else
                 return "Nema autentikacije";
+        }
+
+        public List<Alarm> dajSveOriginalneAlarmeTaga(string tag_name, string token)
+        {
+            List<Alarm> alarmi = new List<Alarm>();
+            int i = -1;
+            if (IsUserAuthenticated(token))
+                foreach (Alarm alarm in alarms)
+                {
+                    if (String.Equals(alarm.ime_velicine, tag_name))
+                    {
+                        
+                        alarmi.Add(alarm);
+                    }
+                }
+            return alarmi;
         }
 
         public List<Alarm> DajAlarmeOdredjenogTaga(string tag_name, string token)

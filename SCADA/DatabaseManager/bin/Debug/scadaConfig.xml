@@ -2,11 +2,25 @@
 <SCADA_konfiguracija xmlns="">
   <AI>
     <tag_name description="ehertrfee egege" driver="fw3fwf" IO_address="C" scan_time="1" alarms="" onoff_scan="true" low_limit="12" high_limit="23" units="wfgwf">test</tag_name>
+    <tag_name description="fwfqwfq wfefgegeg qfwfwf" driver="" IO_address="S" scan_time="" alarms="" onoff_scan="false" low_limit="" high_limit="" units="">ai1</tag_name>
+    <tag_name description="fwfwfwfw wfwfwfwgwe fwfwfwfwf wfwfwfw" driver="" IO_address="C" scan_time="" alarms="" onoff_scan="true" low_limit="" high_limit="" units="">ai2</tag_name>
+    <tag_name description="wwdqdqw qwdwdwdw wdwdwdfghrfhfgd" driver="" IO_address="R" scan_time="" alarms="" onoff_scan="true" low_limit="" high_limit="" units="">ai3</tag_name>
   </AI>
-  <AO />
+  <AO>
+    <tag_name description="wfwefgeg egegeg wdfww" IO_address="S" inital_value="93,3580426497202" low_limit="" high_limit="" units="">ao1</tag_name>
+    <tag_name description="wffgegrrhdf dgdgdgdg fdf" IO_address="C" inital_value="-98,7688340595138" low_limit="" high_limit="" units="">ao2</tag_name>
+    <tag_name description="wfdfdfgd gfyhfyh" IO_address="R" inital_value="26" low_limit="" high_limit="" units="">ao3</tag_name>
+  </AO>
   <DI>
     <tag_name description="wfwefgwe" driver="wdwd" IO_address="C" scan_time="12" onoff_scan="true">3</tag_name>
     <tag_name description="fgwfw" driver="wfwf" IO_address="C" scan_time="12" onoff_scan="true">q</tag_name>
+    <tag_name description="fgegrfhfhf dfdfedfe efefe" driver="" IO_address="S" scan_time="" onoff_scan="true">di1</tag_name>
+    <tag_name description="weyhurtur dfdgfhfh eege" driver="" IO_address="C" scan_time="" onoff_scan="true">di2</tag_name>
+    <tag_name description="wdwdwdw wfwegetger" driver="" IO_address="R" scan_time="" onoff_scan="true">di3</tag_name>
   </DI>
-  <DO />
+  <DO>
+    <tag_name description="wfegrthghf fghfghghh edgergrg" IO_address="S" inital_value="89,1006524188368">do1</tag_name>
+    <tag_name description="fegrhth rgfgrgr" IO_address="C" inital_value="-20,7911690817759">do2</tag_name>
+    <tag_name description="egrhrhr ergergrgr efefef" IO_address="R" inital_value="78">do3</tag_name>
+  </DO>
 </SCADA_konfiguracija>
