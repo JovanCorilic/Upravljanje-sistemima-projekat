@@ -1,58 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:59065/AlarmDisplay.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SCADA" />
-  <xs:element name="SendNotification">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SendNotificationResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="pravljenjeAlarmInformacije">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="alarm" nillable="true" type="q1:Alarm" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="tagVrednost" nillable="true" type="q2:TagVrednost" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="pravljenjeAlarmInformacijeResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="pravljenjeAlarmInformacijeResult" nillable="true" type="q3:AlarmInformacija" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DoWork">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DoWorkResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AlarmDisplayInitialization">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AlarmDisplayInitializationResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="OnNotificationSent">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SCADA" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SCADA" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Alarm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="granicna_vrednost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ime_velicine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="prioritet" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tip" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Alarm" nillable="true" type="tns:Alarm" />
+  <xs:complexType name="TagVrednost">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="tag_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vrednost" type="xs:double" />
+      <xs:element minOccurs="0" name="vreme_kreacije" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TagVrednost" nillable="true" type="tns:TagVrednost" />
+  <xs:complexType name="AlarmInformacija">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ime_velicine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="prioritet" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vreme_aktivacije" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AlarmInformacija" nillable="true" type="tns:AlarmInformacija" />
 </xs:schema>
