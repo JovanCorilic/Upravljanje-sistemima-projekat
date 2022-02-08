@@ -2,7 +2,7 @@
 <SCADA_konfiguracija xmlns="">
   <AI>
     <tag_name description="ehertrfee egege" driver="fw3fwf" IO_address="C" scan_time="1000" alarms="" onoff_scan="true" low_limit="12" high_limit="23" units="wfgwf">test</tag_name>
-    <tag_name description="fwfqwfq wfefgegeg qfwfwf" driver="" IO_address="S" scan_time="1000" alarms="" onoff_scan="false" low_limit="" high_limit="" units="">ai1</tag_name>
+    <tag_name description="fwfqwfq wfefgegeg qfwfwf" driver="" IO_address="S" scan_time="1000" alarms="" onoff_scan="true" low_limit="" high_limit="" units="">ai1</tag_name>
     <tag_name description="fwfwfwfw wfwfwfwgwe fwfwfwfwf wfwfwfw" driver="" IO_address="C" scan_time="1500" alarms="" onoff_scan="true" low_limit="" high_limit="" units="">ai2</tag_name>
     <tag_name description="wwdqdqw qwdwdwdw wdwdwdfghrfhfgd" driver="" IO_address="R" scan_time="3000" alarms="" onoff_scan="true" low_limit="" high_limit="" units="">ai3</tag_name>
   </AI>
