@@ -233,12 +233,12 @@ namespace DatabaseManager
                     ai.description = Console.ReadLine();
                     Console.WriteLine("Unesite driver:");
                     ai.driver = Console.ReadLine();
-                    Console.WriteLine("Unesite I/O addresu:");
+                    Console.WriteLine("Unesite I/O addresu ( S , C , R ):");
                     ai.IO_address = Console.ReadLine();
                     Console.WriteLine("Unesite scan time:");
                     ai.scan_time = Console.ReadLine();
                     ai.alarms = "";
-                    Console.WriteLine("On/Off scan:");
+                    Console.WriteLine("On/Off scan (mora biti on ili off kao unos) :");
                     if (String.Equals(Console.ReadLine(), "on"))
                     {
                         ai.onoff_scan = true;
@@ -272,7 +272,7 @@ namespace DatabaseManager
                     Console.WriteLine("Unesite description:");
                     ao.description = Console.ReadLine();
                     
-                    Console.WriteLine("Unesite I/O addresu:");
+                    Console.WriteLine("Unesite I/O addresu ( S , C , R ):");
                     ao.IO_address = Console.ReadLine();
                     ao.inital_value = "";
                     
@@ -296,12 +296,12 @@ namespace DatabaseManager
                     di.description = Console.ReadLine();
                     Console.WriteLine("Unesite driver:");
                     di.driver = Console.ReadLine();
-                    Console.WriteLine("Unesite I/O addresu:");
+                    Console.WriteLine("Unesite I/O addresu ( S , C , R ):");
                     di.IO_address = Console.ReadLine();
                     Console.WriteLine("Unesite scan time:");
                     di.scan_time = Console.ReadLine();
                     
-                    Console.WriteLine("On/Off scan:");
+                    Console.WriteLine("On/Off scan (mora biti on ili off kao unos) :");
                     if (String.Equals(Console.ReadLine(), "on"))
                     {
                         di.onoff_scan = true;
@@ -328,7 +328,7 @@ namespace DatabaseManager
                     Console.WriteLine("Unesite description:");
                     dO.description = Console.ReadLine();
                     
-                    Console.WriteLine("Unesite I/O addresu:");
+                    Console.WriteLine("Unesite I/O addresu ( S , C , R ):");
                     dO.IO_address = Console.ReadLine();
                     if (proxy.pravljenjeTaga(null,null,null,dO, broj1, token))
                         Console.WriteLine("Uspesno napravljen DO tag.");

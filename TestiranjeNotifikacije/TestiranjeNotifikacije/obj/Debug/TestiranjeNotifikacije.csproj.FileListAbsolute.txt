@@ -5,3 +5,10 @@ C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\Te
 C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\TestiranjeNotifikacije.pdb
 C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.dll
 C:\Users\Kssbc\source\repos\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.pdb
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\TestiranjeNotifikacije.dll.config
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\TestiranjeNotifikacije.dll
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\TestiranjeNotifikacije\TestiranjeNotifikacije\bin\TestiranjeNotifikacije.pdb
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.csproj.AssemblyReference.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.csproj.CoreCompileInputs.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.dll
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\TestiranjeNotifikacije\TestiranjeNotifikacije\obj\Debug\TestiranjeNotifikacije.pdb
