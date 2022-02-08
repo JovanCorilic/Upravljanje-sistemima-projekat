@@ -689,10 +689,10 @@ namespace DatabaseManager.ServiceReference {
         System.Threading.Tasks.Task<bool> daLiJeAnalogniAsync(string tag_name, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeAlarma", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeAlarmaResponse")]
-        string brisanjeAlarma(int broj, string token);
+        string brisanjeAlarma(DatabaseManager.ServiceReference.Alarm alarm, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/brisanjeAlarma", ReplyAction="http://tempuri.org/IUserProcessing/brisanjeAlarmaResponse")]
-        System.Threading.Tasks.Task<string> brisanjeAlarmaAsync(int broj, string token);
+        System.Threading.Tasks.Task<string> brisanjeAlarmaAsync(DatabaseManager.ServiceReference.Alarm alarm, string token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserProcessing/sacuvajAlarme", ReplyAction="http://tempuri.org/IUserProcessing/sacuvajAlarmeResponse")]
         System.Xml.Linq.XElement sacuvajAlarme(string token);
@@ -840,12 +840,12 @@ namespace DatabaseManager.ServiceReference {
             return base.Channel.daLiJeAnalogniAsync(tag_name, token);
         }
         
-        public string brisanjeAlarma(int broj, string token) {
-            return base.Channel.brisanjeAlarma(broj, token);
+        public string brisanjeAlarma(DatabaseManager.ServiceReference.Alarm alarm, string token) {
+            return base.Channel.brisanjeAlarma(alarm, token);
         }
         
-        public System.Threading.Tasks.Task<string> brisanjeAlarmaAsync(int broj, string token) {
-            return base.Channel.brisanjeAlarmaAsync(broj, token);
+        public System.Threading.Tasks.Task<string> brisanjeAlarmaAsync(DatabaseManager.ServiceReference.Alarm alarm, string token) {
+            return base.Channel.brisanjeAlarmaAsync(alarm, token);
         }
         
         public System.Xml.Linq.XElement sacuvajAlarme(string token) {

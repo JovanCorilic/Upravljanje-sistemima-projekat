@@ -23,7 +23,7 @@ namespace SCADA
         [OperationContract]
         bool daLiJeAnalogni(string tag_name, string token);
         [OperationContract]
-        string brisanjeAlarma(int broj, string token);
+        string brisanjeAlarma(Alarm alarm, string token);
         [OperationContract]
         XElement sacuvajAlarme(string token);
         [OperationContract]

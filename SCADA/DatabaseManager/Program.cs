@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -105,7 +106,7 @@ namespace DatabaseManager
                     {
                         Console.WriteLine("Unesite naziv analognog ulaza:");
                         string naziv = Console.ReadLine();
-                        var lista = proxy.DajAlarmeOdredjenogTaga(naziv, token);
+                        var lista = proxy.dajSveOriginalneAlarmeTaga(naziv, token);
                         int br = 0;
                         Console.WriteLine("Unesite broj koji zelite da obrisete:");
                         foreach(ServiceReference.Alarm alarm in lista)
@@ -114,7 +115,8 @@ namespace DatabaseManager
                             Console.WriteLine(br.ToString() + " : " + "Tip " + alarm.tip + " , prioritet " + alarm.prioritet + " , granicna vrednost " + alarm.granicna_vrednost);
                         }
                         int temp = (int)Char.GetNumericValue(Console.ReadKey().KeyChar);
-                        proxy.brisanjeAlarma(int.Parse(lista[temp-1].ime_velicine), token);
+                        Console.WriteLine();
+                        proxy.brisanjeAlarma(lista[temp -1], token);
                         proxy.sacuvajAlarme(token).Save("alarmConfig.xml");
                     }
                     else if (broj1 == 9)
@@ -122,49 +124,65 @@ namespace DatabaseManager
                         var listaAI = proxy.dajSveAITagove(token);
                         foreach (var temp2 in listaAI)
                         {
-                            var vrednost = proxyClient.davanjeVrednosti(temp2.IO_address, temp2.tag_name);
-                            if (temp2.onoff_scan)
-                                proxyClient.SendNotification("Tag name " + vrednost.tag_name + ", vrednost " + vrednost.vrednost.ToString() + " ,vreme kreacije " + vrednost.vreme_kreacije.ToString());
-                            ServiceReference2.Alarm temp1 = new ServiceReference2.Alarm();
+                            Thread thread = new Thread(() => { 
+                                var vrednost = proxyClient.davanjeVrednosti(temp2.IO_address, temp2.tag_name);
+                                int cekanje = int.Parse(temp2.scan_time);
+                                Thread.Sleep(cekanje);
+                                if (temp2.onoff_scan)
+                                    proxyClient.SendNotification("Tag name " + vrednost.tag_name + ", vrednost " + vrednost.vrednost.ToString() + " ,vreme kreacije " + vrednost.vreme_kreacije.ToString());
+                                ServiceReference2.Alarm temp1 = new ServiceReference2.Alarm();
 
-                            ServiceReference2.TagVrednost tagVrednost = new ServiceReference2.TagVrednost();
-                            tagVrednost.Id = vrednost.Id;
-                            tagVrednost.tag_name = vrednost.tag_name;
-                            tagVrednost.vrednost = vrednost.vrednost;
-                            tagVrednost.vreme_kreacije = vrednost.vreme_kreacije;
+                                ServiceReference2.TagVrednost tagVrednost = new ServiceReference2.TagVrednost();
+                                tagVrednost.Id = vrednost.Id;
+                                tagVrednost.tag_name = vrednost.tag_name;
+                                tagVrednost.vrednost = vrednost.vrednost;
+                                tagVrednost.vreme_kreacije = vrednost.vreme_kreacije;
                             
-                            var lista = proxy.dajSveOriginalneAlarmeTaga(vrednost.tag_name, token);
-                            foreach (var temp in lista)
-                            {
-                                temp1 = new ServiceReference2.Alarm();
-                                temp1.tip = temp.tip;
-                                temp1.prioritet = temp.prioritet;
-                                temp1.granicna_vrednost = temp.granicna_vrednost;
-                                temp1.ime_velicine = temp.ime_velicine;
-                                var alarmInformacija = proxyAlarm.pravljenjeAlarmInformacije(temp1, tagVrednost);
-                                if (alarmInformacija != null)
+                                var lista = proxy.dajSveOriginalneAlarmeTaga(vrednost.tag_name, token);
+                                foreach (var temp in lista)
                                 {
-                                    using (StreamWriter sw = File.AppendText("alarmsLog.txt"))
+                                    temp1 = new ServiceReference2.Alarm();
+                                    temp1.tip = temp.tip;
+                                    temp1.prioritet = temp.prioritet;
+                                    temp1.granicna_vrednost = temp.granicna_vrednost;
+                                    temp1.ime_velicine = temp.ime_velicine;
+                                    var alarmInformacija = proxyAlarm.pravljenjeAlarmInformacije(temp1, tagVrednost);
+                                    if (alarmInformacija != null)
                                     {
-                                        sw.WriteLine("Tip " + alarmInformacija.tip + " ime velicine " + alarmInformacija.ime_velicine + " prioritet " + alarmInformacija.prioritet + " vreme aktivacije " + alarmInformacija.vreme_aktivacije.ToString());
+                                        using (StreamWriter sw = File.AppendText("alarmsLog.txt"))
+                                        {
+                                            sw.WriteLine("Tip " + alarmInformacija.tip + " ime velicine " + alarmInformacija.ime_velicine + " prioritet " + alarmInformacija.prioritet + " vreme aktivacije " + alarmInformacija.vreme_aktivacije.ToString());
+                                        }
+                                        for (int i = 0; i < int.Parse(temp.prioritet); i++)
+                                            proxyAlarm.SendNotification("Tip " + alarmInformacija.tip + " ime velicine " + alarmInformacija.ime_velicine + " prioritet " + alarmInformacija.prioritet + " vreme aktivacije " + alarmInformacija.vreme_aktivacije.ToString());
                                     }
-                                    for (int i = 0; i < int.Parse(temp.prioritet); i++)
-                                        proxyAlarm.SendNotification("Tip " + alarmInformacija.tip + " ime velicine " + alarmInformacija.ime_velicine + " prioritet " + alarmInformacija.prioritet + " vreme aktivacije " + alarmInformacija.vreme_aktivacije.ToString());
                                 }
-                            }
-                            
+                            });
+                            thread.Start();
                         }
                         var listaDI = proxy.dajSveDITagove(token);
                         foreach(var temp in listaDI)
                         {
-                            var vrednost = proxyClient.davanjeVrednosti(temp.IO_address, temp.tag_name);
-                            if (temp.onoff_scan)
-                                proxyClient.SendNotification("Tag name " + vrednost.tag_name + ", vrednost " + vrednost.vrednost.ToString() + " ,vreme kreacije " + vrednost.vreme_kreacije.ToString());
+                            Thread thread = new Thread(() =>
+                            {
+                                int cekanje = int.Parse(temp.scan_time);
+                                Thread.Sleep(cekanje);
+                                var vrednost = proxyClient.davanjeVrednosti(temp.IO_address, temp.tag_name);
+                                if (temp.onoff_scan)
+                                    proxyClient.SendNotification("Tag name " + vrednost.tag_name + ", vrednost " + vrednost.vrednost.ToString() + " ,vreme kreacije " + vrednost.vreme_kreacije.ToString());
+                            });
+                            thread.Start();
                         }
+
                     }
                 }
             }
         }
+        static void skeniranjeAI(ServiceReference.AI temp2)
+        {
+
+        }
+
         static void PravljenjeAlarma(ServiceReference.UserProcessingClient proxy,string token)
         {
             ServiceReference.Alarm alarm = new ServiceReference.Alarm();

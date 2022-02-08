@@ -72,7 +72,7 @@
   <xs:element name="brisanjeAlarma">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="broj" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="alarm" nillable="true" type="q4:Alarm" />
         <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -107,7 +107,7 @@
   <xs:element name="PravljenjeAlarma">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="alarm" nillable="true" type="q4:Alarm" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="alarm" nillable="true" type="q5:Alarm" />
         <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -130,7 +130,7 @@
   <xs:element name="DajAlarmeOdredjenogTagaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="DajAlarmeOdredjenogTagaResult" nillable="true" type="q5:ArrayOfAlarm" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="DajAlarmeOdredjenogTagaResult" nillable="true" type="q6:ArrayOfAlarm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -216,10 +216,10 @@
   <xs:element name="pravljenjeTaga">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aI" nillable="true" type="q6:AI" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aO" nillable="true" type="q7:AO" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dI" nillable="true" type="q8:DI" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dO" nillable="true" type="q9:DO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aI" nillable="true" type="q7:AI" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="aO" nillable="true" type="q8:AO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dI" nillable="true" type="q9:DI" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SCADA" minOccurs="0" name="dO" nillable="true" type="q10:DO" />
         <xs:element minOccurs="0" name="brojTag" type="xs:int" />
         <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
       </xs:sequence>

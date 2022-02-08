@@ -69,12 +69,21 @@ namespace SCADA
                 return false;
         }
 
-        public string brisanjeAlarma(int broj, string token)
+        public string brisanjeAlarma(Alarm alarm, string token)
         {
             if (IsUserAuthenticated(token))
             {
-                
-                alarms.RemoveAt(broj);
+                foreach (var temp in alarms)
+                {
+                    if(String.Equals(alarm.granicna_vrednost,temp.granicna_vrednost) &&
+                        String.Equals(alarm.ime_velicine, temp.ime_velicine) &&
+                        String.Equals(alarm.prioritet, temp.prioritet) &&
+                        String.Equals(alarm.tip, temp.tip))
+                    {
+                        alarms.Remove(temp);
+                        break;
+                    }
+                }
                 return "Uspesno obrisano";
             }
             else
