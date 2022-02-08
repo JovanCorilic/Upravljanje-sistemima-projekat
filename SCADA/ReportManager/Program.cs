@@ -35,7 +35,7 @@ namespace ReportManager
                     DateTime temp2 = DateTime.Parse(krajni, culture);
                     var lista = proxy.sviAlarmiOdredjenVremPeriod(temp1, temp2);
                     foreach (var temp in lista)
-                        Console.WriteLine(temp.ToString());
+                        Console.WriteLine("Tip " + temp.tip + " ime velicine " + temp.ime_velicine + " prioritet " + temp.prioritet + " vreme aktivacije " + temp.vreme_aktivacije.ToString());
                     while (true)
                     {
                         Console.WriteLine("Sortiranje podataka po:\n1.Prioritet\n2.Vreme\n0.Natrag");
@@ -48,7 +48,7 @@ namespace ReportManager
                             var listaSordt = lista.OrderBy(m => int.Parse(m.prioritet));
                             foreach (var temp in listaSordt)
                             {
-                                Console.WriteLine(temp.ToString());
+                                Console.WriteLine("Tip " + temp.tip + " ime velicine " + temp.ime_velicine + " prioritet " + temp.prioritet + " vreme aktivacije " + temp.vreme_aktivacije.ToString());
                             }
                         }
                         else if (broj1 == 2)
@@ -56,7 +56,7 @@ namespace ReportManager
                             var listaSort = lista.OrderBy(m => m.vreme_aktivacije);
                             foreach (var temp in listaSort)
                             {
-                                Console.WriteLine(temp.ToString());
+                                Console.WriteLine("Tip " + temp.tip + " ime velicine " + temp.ime_velicine + " prioritet " + temp.prioritet + " vreme aktivacije " + temp.vreme_aktivacije.ToString());
                             }
                         }
                     }
@@ -68,7 +68,7 @@ namespace ReportManager
                     var lista = proxy.sviAlarmiOdredjenogPrioriteta(prioritet);
                     foreach (var temp in lista)
                     {
-                        Console.WriteLine(temp.ToString());
+                        Console.WriteLine("Tip " + temp.tip + " ime velicine " + temp.ime_velicine + " prioritet " + temp.prioritet + " vreme aktivacije " + temp.vreme_aktivacije.ToString());
                     }
                     while (true)
                     {
@@ -82,7 +82,7 @@ namespace ReportManager
                             var listaSort = lista.OrderBy(m => m.vreme_aktivacije);
                             foreach(var temp in listaSort)
                             {
-                                Console.WriteLine(temp.ToString());
+                                Console.WriteLine("Tip " + temp.tip + " ime velicine " + temp.ime_velicine + " prioritet " + temp.prioritet + " vreme aktivacije " + temp.vreme_aktivacije.ToString());
                             }
                         }
                     }
@@ -99,7 +99,7 @@ namespace ReportManager
                     DateTime temp2 = DateTime.Parse(krajni, culture);
                     var lista = proxy.sveVrednostiTagovaUOdredjenomVremenu(temp1, temp2);
                     foreach (var temp in lista)
-                        Console.WriteLine(temp.ToString());
+                        Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                     while (true)
                     {
                         Console.WriteLine("Sortiranje podataka po:\n1.Vreme\n0.Natrag");
@@ -112,7 +112,7 @@ namespace ReportManager
                             var listaSordt = lista.OrderBy(m => m.vreme_kreacije);
                             foreach (var temp in listaSordt)
                             {
-                                Console.WriteLine(temp.ToString());
+                                Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                             }
                         }
                         
@@ -123,7 +123,7 @@ namespace ReportManager
                     var lista = proxy.poslednjaVrednostAItaga();
                     foreach(var temp in lista)
                     {
-                        Console.WriteLine(temp.ToString());
+                        Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                     }
                     while (true)
                     {
@@ -137,7 +137,7 @@ namespace ReportManager
                             var listaSordt = lista.OrderBy(m => m.vreme_kreacije);
                             foreach (var temp in listaSordt)
                             {
-                                Console.WriteLine(temp.ToString());
+                                Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                             }
                         }
 
@@ -148,7 +148,7 @@ namespace ReportManager
                     var lista = proxy.poslednjaVrednostDItaga();
                     foreach (var temp in lista)
                     {
-                        Console.WriteLine(temp.ToString());
+                        Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                     }
                     while (true)
                     {
@@ -162,7 +162,7 @@ namespace ReportManager
                             var listaSordt = lista.OrderBy(m => m.vreme_kreacije);
                             foreach (var temp in listaSordt)
                             {
-                                Console.WriteLine(temp.ToString());
+                                Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                             }
                         }
 
@@ -175,7 +175,7 @@ namespace ReportManager
                     var lista = proxy.sveVrednostiSaOdredjenimIdentifikatorom(naziv);
                     foreach (var temp in lista)
                     {
-                        Console.WriteLine(temp.ToString());
+                        Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                     }
                     while (true)
                     {
@@ -189,7 +189,7 @@ namespace ReportManager
                             var listaSordt = lista.OrderBy(m => m.vrednost);
                             foreach (var temp in listaSordt)
                             {
-                                Console.WriteLine(temp.ToString());
+                                Console.WriteLine("Tag name " + temp.tag_name + ", vrednost " + temp.vrednost.ToString() + " ,vreme kreacije " + temp.vreme_kreacije.ToString());
                             }
                         }
 

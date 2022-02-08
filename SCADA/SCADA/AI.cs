@@ -30,7 +30,7 @@ namespace SCADA
         public string high_limit { get; set; }
         [DataMember]
         public string units { get; set; }
-
+        
         public override string ToString()
         {
             return "tag name: " + tag_name + ", description: " + description + ", driver: " + driver + ", I/O address: " + IO_address + ", \nscan time: " + scan_time + ", alarms: " + alarms +
