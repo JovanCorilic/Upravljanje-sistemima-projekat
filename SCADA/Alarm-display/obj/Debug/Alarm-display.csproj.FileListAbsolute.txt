@@ -1,0 +1,7 @@
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\Alarm-display\bin\Debug\Alarm-display.exe.config
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\Alarm-display\bin\Debug\Alarm-display.exe
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\Alarm-display\bin\Debug\Alarm-display.pdb
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\Alarm-display\obj\Debug\Alarm-display.csproj.AssemblyReference.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\Alarm-display\obj\Debug\Alarm-display.csproj.CoreCompileInputs.cache
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\Alarm-display\obj\Debug\Alarm-display.exe
+C:\Users\Kssbc\Documents\GitHub\Upravljanje-sistemima-projekat\SCADA\Alarm-display\obj\Debug\Alarm-display.pdb

@@ -43,23 +43,19 @@ namespace SCADA
         {
             using (var db = new TagsContext())
             {
-                try
-                {
-                    TagVrednost tagVrednost = new TagVrednost();
-                    tagVrednost.tag_name = tag_name;
-                    tagVrednost.vrednost = Simulation_Driver.SimulationDriver.ReturnValue(IO);
-                    tagVrednost.vreme_kreacije = DateTime.Now;
-                    db.tagVrednosts.Add(tagVrednost);
-                    db.SaveChanges();
+                
+                TagVrednost tagVrednost = new TagVrednost();
+                tagVrednost.tag_name = tag_name;
+                tagVrednost.vrednost = Simulation_Driver.SimulationDriver.ReturnValue(IO);
+                tagVrednost.vreme_kreacije = DateTime.Now;
+                db.tagVrednosts.Add(tagVrednost);
+                db.SaveChanges();
 
-                    return tagVrednost;
+                return tagVrednost;
 
                     
-                }
-                catch (Exception e)
-                {
-                    return null;
-                }
+                
+                
             }
             
         }
